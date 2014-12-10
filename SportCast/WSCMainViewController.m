@@ -6,17 +6,20 @@
 //  Copyright (c) 2014 TWC. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "WSCMainViewController.h"
+#import "WSCProFootballAPI.h"
 
-@interface ViewController ()
+@interface WSCMainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation WSCMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [[WSCProFootballAPI sharedInstance] requestAllGames];
 }
 
 - (void)didReceiveMemoryWarning {
