@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3BD4BF499FCBD1A2EF0AB171 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 520299E3EB30BC4D182099E9 /* libPods.a */; };
 		7114CCA71A37F70700B4C6E3 /* WSCProFootballAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCA61A37F70700B4C6E3 /* WSCProFootballAPI.m */; };
+		7114CCAA1A389EF000B4C6E3 /* WSCGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCA91A389EF000B4C6E3 /* WSCGame.m */; };
+		7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCAC1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m */; };
+		7114CCAF1A38C15400B4C6E3 /* teamLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 7114CCAE1A38C15400B4C6E3 /* teamLocations.json */; };
 		716EDBA21A37A788007F330B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA11A37A788007F330B /* main.m */; };
 		716EDBA51A37A788007F330B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA41A37A788007F330B /* AppDelegate.m */; };
 		716EDBA81A37A788007F330B /* WSCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA71A37A788007F330B /* WSCMainViewController.m */; };
@@ -32,6 +35,11 @@
 		520299E3EB30BC4D182099E9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7114CCA51A37F70700B4C6E3 /* WSCProFootballAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCProFootballAPI.h; sourceTree = "<group>"; };
 		7114CCA61A37F70700B4C6E3 /* WSCProFootballAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCProFootballAPI.m; sourceTree = "<group>"; };
+		7114CCA81A389EF000B4C6E3 /* WSCGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCGame.h; sourceTree = "<group>"; };
+		7114CCA91A389EF000B4C6E3 /* WSCGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCGame.m; sourceTree = "<group>"; };
+		7114CCAB1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCWeatherlyticsGenerator.h; sourceTree = "<group>"; };
+		7114CCAC1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCWeatherlyticsGenerator.m; sourceTree = "<group>"; };
+		7114CCAE1A38C15400B4C6E3 /* teamLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teamLocations.json; sourceTree = "<group>"; };
 		716EDB9C1A37A788007F330B /* SportCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		716EDBA01A37A788007F330B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		716EDBA11A37A788007F330B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -85,6 +93,51 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7114CCB01A38C1E200B4C6E3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7114CCAE1A38C15400B4C6E3 /* teamLocations.json */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7114CCB11A38C20600B4C6E3 /* Weatherlytics */ = {
+			isa = PBXGroup;
+			children = (
+				7114CCAB1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.h */,
+				7114CCAC1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m */,
+			);
+			name = Weatherlytics;
+			sourceTree = "<group>";
+		};
+		7114CCB21A38C20C00B4C6E3 /* ProFootball API */ = {
+			isa = PBXGroup;
+			children = (
+				7114CCA51A37F70700B4C6E3 /* WSCProFootballAPI.h */,
+				7114CCA61A37F70700B4C6E3 /* WSCProFootballAPI.m */,
+			);
+			name = "ProFootball API";
+			sourceTree = "<group>";
+		};
+		7114CCB31A38C22C00B4C6E3 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				7114CCA81A389EF000B4C6E3 /* WSCGame.h */,
+				7114CCA91A389EF000B4C6E3 /* WSCGame.m */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		7114CCB41A38C23A00B4C6E3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				716EDBA91A37A788007F330B /* Main.storyboard */,
+				716EDBA61A37A788007F330B /* WSCMainViewController.h */,
+				716EDBA71A37A788007F330B /* WSCMainViewController.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		716EDB931A37A788007F330B = {
 			isa = PBXGroup;
 			children = (
@@ -108,13 +161,13 @@
 		716EDB9E1A37A788007F330B /* SportCast */ = {
 			isa = PBXGroup;
 			children = (
+				7114CCB41A38C23A00B4C6E3 /* UI */,
+				7114CCB31A38C22C00B4C6E3 /* Data Model */,
+				7114CCB21A38C20C00B4C6E3 /* ProFootball API */,
+				7114CCB11A38C20600B4C6E3 /* Weatherlytics */,
+				7114CCB01A38C1E200B4C6E3 /* Resources */,
 				716EDBA31A37A788007F330B /* AppDelegate.h */,
 				716EDBA41A37A788007F330B /* AppDelegate.m */,
-				716EDBA61A37A788007F330B /* WSCMainViewController.h */,
-				716EDBA71A37A788007F330B /* WSCMainViewController.m */,
-				7114CCA51A37F70700B4C6E3 /* WSCProFootballAPI.h */,
-				7114CCA61A37F70700B4C6E3 /* WSCProFootballAPI.m */,
-				716EDBA91A37A788007F330B /* Main.storyboard */,
 				716EDBAC1A37A788007F330B /* Images.xcassets */,
 				716EDBAE1A37A788007F330B /* LaunchScreen.xib */,
 				716EDB9F1A37A788007F330B /* Supporting Files */,
@@ -231,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				716EDBAB1A37A788007F330B /* Main.storyboard in Resources */,
+				7114CCAF1A38C15400B4C6E3 /* teamLocations.json in Resources */,
 				716EDBB01A37A788007F330B /* LaunchScreen.xib in Resources */,
 				716EDBAD1A37A788007F330B /* Images.xcassets in Resources */,
 			);
@@ -283,10 +337,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */,
 				716EDBA81A37A788007F330B /* WSCMainViewController.m in Sources */,
 				7114CCA71A37F70700B4C6E3 /* WSCProFootballAPI.m in Sources */,
 				716EDBA51A37A788007F330B /* AppDelegate.m in Sources */,
 				716EDBA21A37A788007F330B /* main.m in Sources */,
+				7114CCAA1A389EF000B4C6E3 /* WSCGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

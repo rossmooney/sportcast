@@ -8,6 +8,7 @@
 
 #import "WSCMainViewController.h"
 #import "WSCProFootballAPI.h"
+#import "WSCWeatherlyticsGenerator.h"
 
 @interface WSCMainViewController ()
 
@@ -19,7 +20,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [[WSCProFootballAPI sharedInstance] requestAllGames];
+    NSArray *games = [[WSCProFootballAPI sharedInstance] requestAllGames];
+    [[WSCWeatherlyticsGenerator sharedInstance] generateWeatherlyticsWithGames:games];
 }
 
 - (void)didReceiveMemoryWarning {
