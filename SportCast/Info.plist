@@ -36,5 +36,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>WXDSXAPIKey</key>
+	<string>00728e87-7005-4043-9050-c84d5e7d8ca6</string>
 </dict>
 </plist>

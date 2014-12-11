@@ -12,6 +12,8 @@
 		7114CCAA1A389EF000B4C6E3 /* WSCGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCA91A389EF000B4C6E3 /* WSCGame.m */; };
 		7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCAC1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m */; };
 		7114CCAF1A38C15400B4C6E3 /* teamLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 7114CCAE1A38C15400B4C6E3 /* teamLocations.json */; };
+		7114CCB71A38CEC500B4C6E3 /* WSCNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */; };
+		715D7DDA1A39253B0007FC38 /* WSCWeatherlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */; };
 		716EDBA21A37A788007F330B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA11A37A788007F330B /* main.m */; };
 		716EDBA51A37A788007F330B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA41A37A788007F330B /* AppDelegate.m */; };
 		716EDBA81A37A788007F330B /* WSCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA71A37A788007F330B /* WSCMainViewController.m */; };
@@ -40,6 +42,10 @@
 		7114CCAB1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCWeatherlyticsGenerator.h; sourceTree = "<group>"; };
 		7114CCAC1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCWeatherlyticsGenerator.m; sourceTree = "<group>"; };
 		7114CCAE1A38C15400B4C6E3 /* teamLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teamLocations.json; sourceTree = "<group>"; };
+		7114CCB51A38CEC500B4C6E3 /* WSCNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCNetworking.h; sourceTree = "<group>"; };
+		7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCNetworking.m; sourceTree = "<group>"; };
+		715D7DD81A39253B0007FC38 /* WSCWeatherlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCWeatherlytics.h; sourceTree = "<group>"; };
+		715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCWeatherlytics.m; sourceTree = "<group>"; };
 		716EDB9C1A37A788007F330B /* SportCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		716EDBA01A37A788007F330B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		716EDBA11A37A788007F330B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 			children = (
 				7114CCA81A389EF000B4C6E3 /* WSCGame.h */,
 				7114CCA91A389EF000B4C6E3 /* WSCGame.m */,
+				715D7DD81A39253B0007FC38 /* WSCWeatherlytics.h */,
+				715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -136,6 +144,15 @@
 				716EDBA71A37A788007F330B /* WSCMainViewController.m */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		7114CCB81A38CECA00B4C6E3 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7114CCB51A38CEC500B4C6E3 /* WSCNetworking.h */,
+				7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		716EDB931A37A788007F330B = {
@@ -161,6 +178,7 @@
 		716EDB9E1A37A788007F330B /* SportCast */ = {
 			isa = PBXGroup;
 			children = (
+				7114CCB81A38CECA00B4C6E3 /* Utility */,
 				7114CCB41A38C23A00B4C6E3 /* UI */,
 				7114CCB31A38C22C00B4C6E3 /* Data Model */,
 				7114CCB21A38C20C00B4C6E3 /* ProFootball API */,
@@ -339,7 +357,9 @@
 			files = (
 				7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */,
 				716EDBA81A37A788007F330B /* WSCMainViewController.m in Sources */,
+				715D7DDA1A39253B0007FC38 /* WSCWeatherlytics.m in Sources */,
 				7114CCA71A37F70700B4C6E3 /* WSCProFootballAPI.m in Sources */,
+				7114CCB71A38CEC500B4C6E3 /* WSCNetworking.m in Sources */,
 				716EDBA51A37A788007F330B /* AppDelegate.m in Sources */,
 				716EDBA21A37A788007F330B /* main.m in Sources */,
 				7114CCAA1A389EF000B4C6E3 /* WSCGame.m in Sources */,

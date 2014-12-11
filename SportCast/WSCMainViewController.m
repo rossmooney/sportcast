@@ -20,8 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSArray *games = [[WSCProFootballAPI sharedInstance] requestAllGames];
-    [[WSCWeatherlyticsGenerator sharedInstance] generateWeatherlyticsWithGames:games];
+   [[WSCProFootballAPI sharedInstance] requestAllGamesWithCompletion:^(NSArray *games) {
+       [[WSCWeatherlyticsGenerator sharedInstance] generateWeatherlyticsWithGames:games];
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

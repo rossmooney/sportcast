@@ -13,6 +13,6 @@
 + (id)sharedInstance;
 
 //API Methods
-- (NSArray *)requestAllGames;
+- (void)requestAllGamesWithCompletion:(void (^)(NSArray *))completion;
 
 @end

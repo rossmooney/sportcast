@@ -1,8 +1,130 @@
 {
-	"teams":
-	{
-		"team" : "WAS",
-		"stadiumCoordinates" : "(38.907778,-76.864444)"
-	}
-	
+	"TEN":
+		{
+			"stadiumCoordinates" : "(36.16,-86.77)"
+		},
+	"NYG":
+		{
+			"stadiumCoordinates" : "(40.81,-74.07)"
+		},
+	"PIT":
+		{
+			"stadiumCoordinates" : "(40.44,-80.01)"
+		},
+	"CAR":
+		{
+			"stadiumCoordinates" : "(35.22,-80.85)"
+		},
+	"BAL":
+		{
+			"stadiumCoordinates" : "(39.27,-76.62)"
+		},
+	"TB":
+		{
+			"stadiumCoordinates" : "(27.97,-82.50)"
+		},
+	"IND":
+		{
+			"stadiumCoordinates" : "(39.76,-86.16)"
+		},
+	"MIN":
+		{
+			"stadiumCoordinates" : "(44.97,-93.25)"
+		},
+	"ARI":
+		{
+			"stadiumCoordinates" : "(33.52,-112.26)"
+		},
+	"DAL":
+		{
+			"stadiumCoordinates" : "(32.74,-97.09)"
+		},
+	"ATL":
+		{
+			"stadiumCoordinates" : "(33.75,-84.40)"
+		},
+	"NYJ":
+		{
+			"stadiumCoordinates" : "(40.81,-74.07)"
+		},
+	"DEN":
+		{
+			"stadiumCoordinates" : "(39.74,-105.02)"
+		},
+	"MIA":
+		{
+			"stadiumCoordinates" : "(25.95,-80.23)"
+		},
+	"PHI":
+		{
+			"stadiumCoordinates" : "(39.90,-75.16)"
+		},
+	"CHI":
+		{
+			"stadiumCoordinates" : "(41.86,-87.61)"
+		},
+	"NE":
+		{
+			"stadiumCoordinates" : "(42.09,-71.26)"
+		},
+	"WAS":
+		{
+			"stadiumCoordinates" : "(38.90,-76.86)"
+		},
+	"GB":
+		{
+			"stadiumCoordinates" : "(44.50,-88.06)"
+		},
+	"SD":
+		{
+			"stadiumCoordinates" : "(32.78,-117.11)"
+		},
+	"NO":
+		{
+			"stadiumCoordinates" : "(29.95,-90.08)"
+		},
+	"HOU":
+		{
+			"stadiumCoordinates" : "(29.68,-95.41)"
+		},
+	"BUF":
+		{
+			"stadiumCoordinates" : "(42.77,-78.78)"
+		},
+	"SF":
+		{
+			"stadiumCoordinates" : "(37.71,-122.38)"
+		},
+	"JAC":
+		{
+			"stadiumCoordinates" : "(30.32,-81.63)"
+		},
+	"CLE":
+		{
+			"stadiumCoordinates" : "(41.50,-81.69)"
+		},
+	"OAK":
+		{
+			"stadiumCoordinates" : "(37.75,-122.20)"
+		},
+	"KC":
+		{
+			"stadiumCoordinates" : "(39.04,-94.48)"
+		},
+	"STL":
+		{
+			"stadiumCoordinates" : "(38.63,-90.18)"
+		},
+	"SEA":
+		{
+			"stadiumCoordinates" : "(47.59,-122.33)"
+		},
+	"CIN":
+		{
+			"stadiumCoordinates" : "(39.09,-84.51)"
+		},
+	"DET":
+		{
+			"stadiumCoordinates" : "(42.34,-83.04)"
+		}
 }

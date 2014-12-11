@@ -7,6 +7,7 @@
 //
 
 #import "WSCProFootballAPI.h"
+#import "WSCNetworking.h"
 #import "WSCGame.h"
 
 //API Constants
@@ -38,40 +39,14 @@ NSString * const apiGames =      @"games";
 
 #pragma mark - API Methods
 
-- (NSArray *)requestAllGames {
-    NSData *data = [self sendAPIPostRequest:apiSchedule withParameters:@{}];
-    NSArray *games = [self gamesFromJSON:data error:nil];
-    
-    return games;
-}
+- (void)requestAllGamesWithCompletion:(void (^)(NSArray *))completion;
+ {
+    [[WSCNetworking sharedInstance] sendPostRequest:[NSString stringWithFormat:@"%@%@", apiUrl, apiSchedule] withParameters:@{@"api_key":apiKey, @"year":@"2014"} completionHandler:^(NSData *data) {
+        NSArray *games = [self gamesFromJSON:data error:nil];
+        
+        completion(games);
+    }];
 
-
-#pragma mark - Networking
-
-- (NSData *)sendAPIPostRequest:(NSString *)command withParameters:(NSDictionary *)parameters {
-    //Set API key (to access data)
-    NSString *post = [NSString stringWithFormat:@"api_key=%@", apiKey];
-    
-    //Add parameters to post string
-    for(NSString *key in parameters) {
-        post = [NSString stringWithFormat:@"%@&%@=%@", post, key, [parameters objectForKey:key]];
-    }
-    
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", apiUrl, command]]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    
-    NSURLResponse * response = nil;
-    NSError * error = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    
-    return data;
 }
 
 - (NSArray *)gamesFromJSON:(NSData *)objectNotation error:(NSError **)error

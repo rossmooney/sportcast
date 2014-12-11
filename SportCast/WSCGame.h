@@ -37,7 +37,8 @@ enum {
     WSCGameConditionSunny,
     WSCGameConditionCloudy,
     WSCGameConditionRain,
-    WSCGameConditionSnow
+    WSCGameConditionSnow,
+    WSCGameConditionFair
 };
 typedef NSUInteger WSCGameCondition;
 
