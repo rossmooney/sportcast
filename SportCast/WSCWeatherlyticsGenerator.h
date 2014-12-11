@@ -12,6 +12,6 @@
 
 + (id)sharedInstance;
 
-- (void)generateWeatherlyticsWithGames:(NSArray *)games;
+- (void)generateWeatherlyticsWithGames:(NSArray *)games andCompletionHandler:(void (^)(void))completion;
 
 @end

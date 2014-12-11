@@ -10,6 +10,7 @@
 #import "WSCWeatherlytics.h"
 #import "WSCNetworking.h"
 #import "WSCGame.h"
+#import "WSCCoreDataManager.h"
 
 //WXCore
 #import "WXWeatherDataService/WXWeatherDataService+Observations.h"
@@ -22,6 +23,8 @@
 //For tracking progress
 @property (nonatomic, assign) NSUInteger totalGames;
 @property (nonatomic, assign) NSUInteger gamesAnalyzed;
+@property (nonatomic, copy) void (^completionHandler)(void);
+
 
 
 @end
@@ -51,9 +54,11 @@
 
 #pragma mark - Weatherlytics Generation
 
-- (void)generateWeatherlyticsWithGames:(NSArray *)games {
+- (void)generateWeatherlyticsWithGames:(NSArray *)games andCompletionHandler:(void (^)(void))completion{
+    self.completionHandler = completion;
+    
     //only use games that have finished
-    NSPredicate *finalPredicate = [NSPredicate predicateWithFormat:@"isFinal == 1"];
+    NSPredicate *finalPredicate = [NSPredicate predicateWithFormat:@"isFinal == 1 AND analyzed == 0"];
     self.games = [games filteredArrayUsingPredicate:finalPredicate];
 
     self.totalGames = self.games.count;
@@ -219,8 +224,16 @@
         [leagueWeatherlytics addObject:teamWeatherlytics];
     }
     
+    //Save all games
+    [[WSCCoreDataManager sharedInstance] saveGames:self.games];
     
-    NSLog(@"");
+    //Save all weatherlytics
+    
+    
+    //Return array of all weatherlytics for teams
+    if(self.completionHandler) {
+        self.completionHandler();
+    }
 }
 
 #pragma mark - Team Locations

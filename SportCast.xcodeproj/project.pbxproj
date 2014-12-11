@@ -14,6 +14,12 @@
 		7114CCAF1A38C15400B4C6E3 /* teamLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 7114CCAE1A38C15400B4C6E3 /* teamLocations.json */; };
 		7114CCB71A38CEC500B4C6E3 /* WSCNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */; };
 		715D7DDA1A39253B0007FC38 /* WSCWeatherlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */; };
+		715D7DDC1A39DE770007FC38 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715D7DDB1A39DE770007FC38 /* CoreData.framework */; };
+		715D7DE01A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DDE1A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld */; };
+		715D7DF51A39E9AE0007FC38 /* CDGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DF41A39E9AE0007FC38 /* CDGame.m */; };
+		715D7DF81A39E9AF0007FC38 /* CDValueArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DF71A39E9AF0007FC38 /* CDValueArray.m */; };
+		715D7DFB1A39E9AF0007FC38 /* CDTeamWeatherlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DFA1A39E9AF0007FC38 /* CDTeamWeatherlytics.m */; };
+		715D7DFE1A39FC550007FC38 /* WSCCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DFD1A39FC550007FC38 /* WSCCoreDataManager.m */; };
 		716EDBA21A37A788007F330B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA11A37A788007F330B /* main.m */; };
 		716EDBA51A37A788007F330B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA41A37A788007F330B /* AppDelegate.m */; };
 		716EDBA81A37A788007F330B /* WSCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA71A37A788007F330B /* WSCMainViewController.m */; };
@@ -46,6 +52,16 @@
 		7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCNetworking.m; sourceTree = "<group>"; };
 		715D7DD81A39253B0007FC38 /* WSCWeatherlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCWeatherlytics.h; sourceTree = "<group>"; };
 		715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCWeatherlytics.m; sourceTree = "<group>"; };
+		715D7DDB1A39DE770007FC38 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		715D7DDF1A39E21F0007FC38 /* SportCastDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SportCastDataModel.xcdatamodel; sourceTree = "<group>"; };
+		715D7DF31A39E9AE0007FC38 /* CDGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDGame.h; sourceTree = "<group>"; };
+		715D7DF41A39E9AE0007FC38 /* CDGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDGame.m; sourceTree = "<group>"; };
+		715D7DF61A39E9AF0007FC38 /* CDValueArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDValueArray.h; sourceTree = "<group>"; };
+		715D7DF71A39E9AF0007FC38 /* CDValueArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDValueArray.m; sourceTree = "<group>"; };
+		715D7DF91A39E9AF0007FC38 /* CDTeamWeatherlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTeamWeatherlytics.h; sourceTree = "<group>"; };
+		715D7DFA1A39E9AF0007FC38 /* CDTeamWeatherlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTeamWeatherlytics.m; sourceTree = "<group>"; };
+		715D7DFC1A39FC550007FC38 /* WSCCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCCoreDataManager.h; sourceTree = "<group>"; };
+		715D7DFD1A39FC550007FC38 /* WSCCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCCoreDataManager.m; sourceTree = "<group>"; };
 		716EDB9C1A37A788007F330B /* SportCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		716EDBA01A37A788007F330B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		716EDBA11A37A788007F330B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -68,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				715D7DDC1A39DE770007FC38 /* CoreData.framework in Frameworks */,
 				3BD4BF499FCBD1A2EF0AB171 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +111,7 @@
 		64C8D8AAC46C5F558917BAD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				715D7DDB1A39DE770007FC38 /* CoreData.framework */,
 				520299E3EB30BC4D182099E9 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -132,6 +150,7 @@
 				7114CCA91A389EF000B4C6E3 /* WSCGame.m */,
 				715D7DD81A39253B0007FC38 /* WSCWeatherlytics.h */,
 				715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */,
+				715D7DDE1A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -149,6 +168,8 @@
 		7114CCB81A38CECA00B4C6E3 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				715D7DFC1A39FC550007FC38 /* WSCCoreDataManager.h */,
+				715D7DFD1A39FC550007FC38 /* WSCCoreDataManager.m */,
 				7114CCB51A38CEC500B4C6E3 /* WSCNetworking.h */,
 				7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */,
 			);
@@ -158,6 +179,12 @@
 		716EDB931A37A788007F330B = {
 			isa = PBXGroup;
 			children = (
+				715D7DF91A39E9AF0007FC38 /* CDTeamWeatherlytics.h */,
+				715D7DFA1A39E9AF0007FC38 /* CDTeamWeatherlytics.m */,
+				715D7DF61A39E9AF0007FC38 /* CDValueArray.h */,
+				715D7DF71A39E9AF0007FC38 /* CDValueArray.m */,
+				715D7DF31A39E9AE0007FC38 /* CDGame.h */,
+				715D7DF41A39E9AE0007FC38 /* CDGame.m */,
 				716EDB9E1A37A788007F330B /* SportCast */,
 				716EDBB81A37A788007F330B /* SportCastTests */,
 				716EDB9D1A37A788007F330B /* Products */,
@@ -356,12 +383,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */,
+				715D7DFE1A39FC550007FC38 /* WSCCoreDataManager.m in Sources */,
+				715D7DFB1A39E9AF0007FC38 /* CDTeamWeatherlytics.m in Sources */,
+				715D7DF81A39E9AF0007FC38 /* CDValueArray.m in Sources */,
 				716EDBA81A37A788007F330B /* WSCMainViewController.m in Sources */,
 				715D7DDA1A39253B0007FC38 /* WSCWeatherlytics.m in Sources */,
 				7114CCA71A37F70700B4C6E3 /* WSCProFootballAPI.m in Sources */,
 				7114CCB71A38CEC500B4C6E3 /* WSCNetworking.m in Sources */,
+				715D7DF51A39E9AE0007FC38 /* CDGame.m in Sources */,
 				716EDBA51A37A788007F330B /* AppDelegate.m in Sources */,
 				716EDBA21A37A788007F330B /* main.m in Sources */,
+				715D7DE01A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld in Sources */,
 				7114CCAA1A389EF000B4C6E3 /* WSCGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +599,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		715D7DDE1A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				715D7DDF1A39E21F0007FC38 /* SportCastDataModel.xcdatamodel */,
+			);
+			currentVersion = 715D7DDF1A39E21F0007FC38 /* SportCastDataModel.xcdatamodel */;
+			path = SportCastDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 716EDB941A37A788007F330B /* Project object */;
 }

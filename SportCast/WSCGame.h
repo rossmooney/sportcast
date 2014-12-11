@@ -97,4 +97,7 @@ typedef NSUInteger WSCGameStadiumType;
 @property (nonatomic, assign) WSCGameWind          gameWind;
 @property (nonatomic, assign) WSCGamePressure      gamePressure;
 
+//used for tracking, not saved
+@property (nonatomic, assign) BOOL                  analyzed;
+
 @end

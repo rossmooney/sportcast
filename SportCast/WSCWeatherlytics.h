@@ -10,7 +10,7 @@
 
 @interface WSCWeatherlytics : NSObject
 
-@property (nonatomic, assign) NSUInteger    gameId;
+@property (nonatomic, assign) NSUInteger    weatherlyticsId;
 @property (nonatomic, strong) NSDate        *startDate;
 @property (nonatomic, strong) NSDate        *endDate;
 @property (nonatomic, strong) NSString      *team;

@@ -44,7 +44,22 @@ NSString * const apiGames =      @"games";
     [[WSCNetworking sharedInstance] sendPostRequest:[NSString stringWithFormat:@"%@%@", apiUrl, apiSchedule] withParameters:@{@"api_key":apiKey, @"year":@"2014"} completionHandler:^(NSData *data) {
         NSArray *games = [self gamesFromJSON:data error:nil];
         
-        completion(games);
+        //Only add new games
+        NSMutableArray *workingGames = [NSMutableArray array];
+        for(WSCGame *game in games) {
+            NSPredicate *filter = [NSPredicate predicateWithFormat:@"gameId = %ld", game.gameId];
+            NSArray *thisGame = [self.games filteredArrayUsingPredicate:filter];
+            if(thisGame.count > 0) {
+                [workingGames addObject:thisGame[0]];
+            }
+            else {
+                [workingGames addObject:game];
+            }
+        }
+        
+        self.games = workingGames;
+        
+        completion(self.games);
     }];
 
 }
@@ -63,6 +78,7 @@ NSString * const apiGames =      @"games";
 
     for (NSDictionary *gameDict in parsedObject) {
         WSCGame *game = [[WSCGame alloc] init];
+        game.gameId =  [[gameDict objectForKey:@"id"] longValue];
         game.homeTeam = [gameDict objectForKey:@"home"];
         game.awayTeam = [gameDict objectForKey:@"away"];
         game.homeScore = @([[gameDict objectForKey:@"home_score"] integerValue]);

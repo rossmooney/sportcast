@@ -10,6 +10,9 @@
 
 @interface WSCProFootballAPI : NSObject
 
+@property (nonatomic, strong) NSArray *games;
+
+
 + (id)sharedInstance;
 
 //API Methods

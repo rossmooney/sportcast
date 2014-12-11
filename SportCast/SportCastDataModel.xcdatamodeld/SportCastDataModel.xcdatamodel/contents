@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CDGame" representedClassName="CDGame" syncable="YES">
+        <attribute name="awayScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="awayTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="gameCondition" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="gameHumidity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="gameid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gamePressure" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="gameTemperature" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="gameWind" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="homeScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="homeTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFinal" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isNightGame" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="seasonType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="stadiumType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="CDTeamWeatherlytics" representedClassName="CDTeamWeatherlytics" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="team" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="condiitionValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>
+        <relationship name="humidityValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>
+        <relationship name="pressureValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>
+        <relationship name="temperatureValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>
+        <relationship name="windValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>
+    </entity>
+    <entity name="CDValueArray" representedClassName="CDValueArray" syncable="YES">
+        <attribute name="value0" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="value1" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="value2" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="value3" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="value4" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="value5" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDGame" positionX="-63" positionY="-18" width="128" height="270"/>
+        <element name="CDTeamWeatherlytics" positionX="-54" positionY="108" width="128" height="163"/>
+        <element name="CDValueArray" positionX="-36" positionY="117" width="128" height="133"/>
+    </elements>
+</model>
