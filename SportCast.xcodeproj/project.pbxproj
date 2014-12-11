@@ -20,6 +20,10 @@
 		715D7DF81A39E9AF0007FC38 /* CDValueArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DF71A39E9AF0007FC38 /* CDValueArray.m */; };
 		715D7DFB1A39E9AF0007FC38 /* CDTeamWeatherlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DFA1A39E9AF0007FC38 /* CDTeamWeatherlytics.m */; };
 		715D7DFE1A39FC550007FC38 /* WSCCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DFD1A39FC550007FC38 /* WSCCoreDataManager.m */; };
+		715D7E021A3A38870007FC38 /* GameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7E011A3A38870007FC38 /* GameCell.m */; };
+		715D7E051A3A396C0007FC38 /* WSCScheduleDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7E041A3A396C0007FC38 /* WSCScheduleDay.m */; };
+		715D7E0B1A3A422E0007FC38 /* SectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7E0A1A3A422E0007FC38 /* SectionHeaderCell.m */; };
+		715D7E0E1A3A4CBA0007FC38 /* NSDate+NoTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7E0D1A3A4CBA0007FC38 /* NSDate+NoTime.m */; };
 		716EDBA21A37A788007F330B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA11A37A788007F330B /* main.m */; };
 		716EDBA51A37A788007F330B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA41A37A788007F330B /* AppDelegate.m */; };
 		716EDBA81A37A788007F330B /* WSCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBA71A37A788007F330B /* WSCMainViewController.m */; };
@@ -54,14 +58,22 @@
 		715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCWeatherlytics.m; sourceTree = "<group>"; };
 		715D7DDB1A39DE770007FC38 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		715D7DDF1A39E21F0007FC38 /* SportCastDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SportCastDataModel.xcdatamodel; sourceTree = "<group>"; };
-		715D7DF31A39E9AE0007FC38 /* CDGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDGame.h; sourceTree = "<group>"; };
-		715D7DF41A39E9AE0007FC38 /* CDGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDGame.m; sourceTree = "<group>"; };
-		715D7DF61A39E9AF0007FC38 /* CDValueArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDValueArray.h; sourceTree = "<group>"; };
-		715D7DF71A39E9AF0007FC38 /* CDValueArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDValueArray.m; sourceTree = "<group>"; };
-		715D7DF91A39E9AF0007FC38 /* CDTeamWeatherlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTeamWeatherlytics.h; sourceTree = "<group>"; };
-		715D7DFA1A39E9AF0007FC38 /* CDTeamWeatherlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTeamWeatherlytics.m; sourceTree = "<group>"; };
+		715D7DF31A39E9AE0007FC38 /* CDGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDGame.h; path = ../CDGame.h; sourceTree = "<group>"; };
+		715D7DF41A39E9AE0007FC38 /* CDGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDGame.m; path = ../CDGame.m; sourceTree = "<group>"; };
+		715D7DF61A39E9AF0007FC38 /* CDValueArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDValueArray.h; path = ../CDValueArray.h; sourceTree = "<group>"; };
+		715D7DF71A39E9AF0007FC38 /* CDValueArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDValueArray.m; path = ../CDValueArray.m; sourceTree = "<group>"; };
+		715D7DF91A39E9AF0007FC38 /* CDTeamWeatherlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDTeamWeatherlytics.h; path = ../CDTeamWeatherlytics.h; sourceTree = "<group>"; };
+		715D7DFA1A39E9AF0007FC38 /* CDTeamWeatherlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDTeamWeatherlytics.m; path = ../CDTeamWeatherlytics.m; sourceTree = "<group>"; };
 		715D7DFC1A39FC550007FC38 /* WSCCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCCoreDataManager.h; sourceTree = "<group>"; };
 		715D7DFD1A39FC550007FC38 /* WSCCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCCoreDataManager.m; sourceTree = "<group>"; };
+		715D7E001A3A38870007FC38 /* GameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCell.h; sourceTree = "<group>"; };
+		715D7E011A3A38870007FC38 /* GameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCell.m; sourceTree = "<group>"; };
+		715D7E031A3A396C0007FC38 /* WSCScheduleDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCScheduleDay.h; sourceTree = "<group>"; };
+		715D7E041A3A396C0007FC38 /* WSCScheduleDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCScheduleDay.m; sourceTree = "<group>"; };
+		715D7E091A3A422E0007FC38 /* SectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderCell.h; sourceTree = "<group>"; };
+		715D7E0A1A3A422E0007FC38 /* SectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderCell.m; sourceTree = "<group>"; };
+		715D7E0C1A3A4CBA0007FC38 /* NSDate+NoTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NoTime.h"; sourceTree = "<group>"; };
+		715D7E0D1A3A4CBA0007FC38 /* NSDate+NoTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NoTime.m"; sourceTree = "<group>"; };
 		716EDB9C1A37A788007F330B /* SportCast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportCast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		716EDBA01A37A788007F330B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		716EDBA11A37A788007F330B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -146,6 +158,12 @@
 		7114CCB31A38C22C00B4C6E3 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				715D7DF91A39E9AF0007FC38 /* CDTeamWeatherlytics.h */,
+				715D7DFA1A39E9AF0007FC38 /* CDTeamWeatherlytics.m */,
+				715D7DF61A39E9AF0007FC38 /* CDValueArray.h */,
+				715D7DF71A39E9AF0007FC38 /* CDValueArray.m */,
+				715D7DF31A39E9AE0007FC38 /* CDGame.h */,
+				715D7DF41A39E9AE0007FC38 /* CDGame.m */,
 				7114CCA81A389EF000B4C6E3 /* WSCGame.h */,
 				7114CCA91A389EF000B4C6E3 /* WSCGame.m */,
 				715D7DD81A39253B0007FC38 /* WSCWeatherlytics.h */,
@@ -158,6 +176,7 @@
 		7114CCB41A38C23A00B4C6E3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				715D7DFF1A3A38580007FC38 /* Cell Prototypes */,
 				716EDBA91A37A788007F330B /* Main.storyboard */,
 				716EDBA61A37A788007F330B /* WSCMainViewController.h */,
 				716EDBA71A37A788007F330B /* WSCMainViewController.m */,
@@ -172,19 +191,28 @@
 				715D7DFD1A39FC550007FC38 /* WSCCoreDataManager.m */,
 				7114CCB51A38CEC500B4C6E3 /* WSCNetworking.h */,
 				7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */,
+				715D7E031A3A396C0007FC38 /* WSCScheduleDay.h */,
+				715D7E041A3A396C0007FC38 /* WSCScheduleDay.m */,
+				715D7E0C1A3A4CBA0007FC38 /* NSDate+NoTime.h */,
+				715D7E0D1A3A4CBA0007FC38 /* NSDate+NoTime.m */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		715D7DFF1A3A38580007FC38 /* Cell Prototypes */ = {
+			isa = PBXGroup;
+			children = (
+				715D7E091A3A422E0007FC38 /* SectionHeaderCell.h */,
+				715D7E0A1A3A422E0007FC38 /* SectionHeaderCell.m */,
+				715D7E001A3A38870007FC38 /* GameCell.h */,
+				715D7E011A3A38870007FC38 /* GameCell.m */,
+			);
+			name = "Cell Prototypes";
 			sourceTree = "<group>";
 		};
 		716EDB931A37A788007F330B = {
 			isa = PBXGroup;
 			children = (
-				715D7DF91A39E9AF0007FC38 /* CDTeamWeatherlytics.h */,
-				715D7DFA1A39E9AF0007FC38 /* CDTeamWeatherlytics.m */,
-				715D7DF61A39E9AF0007FC38 /* CDValueArray.h */,
-				715D7DF71A39E9AF0007FC38 /* CDValueArray.m */,
-				715D7DF31A39E9AE0007FC38 /* CDGame.h */,
-				715D7DF41A39E9AE0007FC38 /* CDGame.m */,
 				716EDB9E1A37A788007F330B /* SportCast */,
 				716EDBB81A37A788007F330B /* SportCastTests */,
 				716EDB9D1A37A788007F330B /* Products */,
@@ -383,8 +411,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */,
+				715D7E021A3A38870007FC38 /* GameCell.m in Sources */,
 				715D7DFE1A39FC550007FC38 /* WSCCoreDataManager.m in Sources */,
 				715D7DFB1A39E9AF0007FC38 /* CDTeamWeatherlytics.m in Sources */,
+				715D7E051A3A396C0007FC38 /* WSCScheduleDay.m in Sources */,
 				715D7DF81A39E9AF0007FC38 /* CDValueArray.m in Sources */,
 				716EDBA81A37A788007F330B /* WSCMainViewController.m in Sources */,
 				715D7DDA1A39253B0007FC38 /* WSCWeatherlytics.m in Sources */,
@@ -392,9 +422,11 @@
 				7114CCB71A38CEC500B4C6E3 /* WSCNetworking.m in Sources */,
 				715D7DF51A39E9AE0007FC38 /* CDGame.m in Sources */,
 				716EDBA51A37A788007F330B /* AppDelegate.m in Sources */,
+				715D7E0B1A3A422E0007FC38 /* SectionHeaderCell.m in Sources */,
 				716EDBA21A37A788007F330B /* main.m in Sources */,
 				715D7DE01A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld in Sources */,
 				7114CCAA1A389EF000B4C6E3 /* WSCGame.m in Sources */,
+				715D7E0E1A3A4CBA0007FC38 /* NSDate+NoTime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +502,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -505,7 +537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

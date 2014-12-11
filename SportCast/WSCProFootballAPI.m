@@ -9,6 +9,7 @@
 #import "WSCProFootballAPI.h"
 #import "WSCNetworking.h"
 #import "WSCGame.h"
+#import "NSDate+NoTime.h"
 
 //API Constants
 NSString * const apiKey =        @"Dz4AgiXSEoNCJHc3r7eF8y6hPsW0taVu";
@@ -38,6 +39,27 @@ NSString * const apiGames =      @"games";
 }
 
 #pragma mark - API Methods
+
+- (void)requestUpcomingGamesForDays:(NSUInteger)days withCompletion:(void (^)(NSArray *))completion {
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth) fromDate:[NSDate date]];
+
+    
+    [[WSCNetworking sharedInstance] sendPostRequest:[NSString stringWithFormat:@"%@%@", apiUrl, apiSchedule] withParameters:@{@"api_key":apiKey, @"year":[NSString stringWithFormat:@"%d",components.year], @"month":[NSString stringWithFormat:@"%d",components.month]} completionHandler:^(NSData *data) {
+        NSArray *games = [self gamesFromJSON:data error:nil];
+        
+        NSMutableArray *mutableGames = [NSMutableArray array];
+        NSDate *daysAgo = [[NSDate date] dateByAddingTimeInterval:(3600*24*days)];
+        for(WSCGame *game in games) {
+        
+            if(([[game.date dateWithoutTime] compare:daysAgo] == NSOrderedAscending)&&([[game.date dateWithoutTime] compare:[NSDate date]] == NSOrderedDescending)){
+                [mutableGames addObject:game];
+            }
+        }
+        
+        completion(mutableGames);
+    }];
+}
 
 - (void)requestAllGamesWithCompletion:(void (^)(NSArray *))completion;
  {

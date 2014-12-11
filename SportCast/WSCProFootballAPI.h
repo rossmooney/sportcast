@@ -17,5 +17,5 @@
 
 //API Methods
 - (void)requestAllGamesWithCompletion:(void (^)(NSArray *))completion;
-
+- (void)requestUpcomingGamesForDays:(NSUInteger)days withCompletion:(void (^)(NSArray *))completion;
 @end

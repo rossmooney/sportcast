@@ -10,6 +10,5 @@
 
 @interface WSCMainViewController : UIViewController
 
-
 @end
 
