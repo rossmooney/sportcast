@@ -266,7 +266,7 @@
             blockGame.gameCondition = [self gameConditionWithString:[observation objectForKey:@"wx"]];
             blockGame.gameHumidity = [self gameHumidityWithString:[observation objectForKey:@"rH"]];
             blockGame.gameWind = [self gameWindWithString:[observation objectForKey:@"wSpdM"]];
-            blockGame.gamePressure = [self gameWindWithString:[observation objectForKey:@"alt"]];
+            blockGame.gamePressure = [self gamePressureWithString:[observation objectForKey:@"alt"]];
             
         }
         
@@ -376,7 +376,7 @@
 - (WSCGamePressure)gamePressureWithString:(NSString *)pressureString {
     WSCGamePressure gamePressure;
     
-    NSUInteger pressure = [pressureString doubleValue];
+    double pressure = [pressureString doubleValue];
     if(pressure < 29.85) {
         gamePressure = WSCGamePressureLow;
     }
