@@ -19,5 +19,8 @@
 @property (nonatomic, strong) NSArray       *pressureValues;
 @property (nonatomic, strong) NSArray       *humidityValues;
 @property (nonatomic, strong) NSArray       *conditionValues;
+@property (nonatomic, strong) NSArray       *dayNightValues;
+@property (nonatomic, strong) NSArray       *stadiumTypeValues;
+
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "WSCWeatherlyticsGenerator.h"
+#import "WSCWeatherlytics.h"
 #import "WSCNetworking.h"
 #import "WSCGame.h"
 
@@ -51,16 +52,31 @@
 #pragma mark - Weatherlytics Generation
 
 - (void)generateWeatherlyticsWithGames:(NSArray *)games {
-    self.games = games;
-    self.totalGames = games.count;
+    //only use games that have finished
+    NSPredicate *finalPredicate = [NSPredicate predicateWithFormat:@"isFinal == 1"];
+    self.games = [games filteredArrayUsingPredicate:finalPredicate];
+
+    self.totalGames = self.games.count;
     self.gamesAnalyzed = 0;
     
     //Loop through all games
-    for(WSCGame *game in games) {
+    for(WSCGame *game in self.games) {
         //Get coordinates of home team (likely the game's location)
         NSDictionary *teamData = [self.teamLocations objectForKey:game.homeTeam];
+        
+        //Ensure we have the team's location and that game has finished
         if(teamData) {
             NSString *stadiumCoordinates = [teamData objectForKey:@"stadiumCoordinates"];
+            NSString *stadiumType = [teamData objectForKey:@"stadiumType"];
+            if([stadiumType isEqualToString:@"dome"]) {
+                game.stadiumType = WSCGameStadiumDome;
+            }
+            else if([stadiumType isEqualToString:@"retractable"]) {
+                game.stadiumType = WSCGameStadiumRetractable;
+            }
+            else {
+                game.stadiumType = WSCGameStadiumOpen;
+            }
             
             __block WSCGame *blockGame = game;
             
@@ -77,13 +93,134 @@
 }
 
 - (void)finishAnalysis {
+    NSMutableArray *leagueWeatherlytics = [NSMutableArray array];
+    
     //Analyze all teams
     for(NSString *teamName in self.teamLocations) {
+        //Create weatherlytics object
+        WSCWeatherlytics *teamWeatherlytics = [[WSCWeatherlytics alloc] init];
+        teamWeatherlytics.team = teamName;
+        
+        //Get games with this team
         NSPredicate *teamPredicate = [NSPredicate predicateWithFormat:@"homeTeam = %@ OR awayTeam = %@", teamName, teamName];
         NSArray *gamesInvolvingTeam = [self.games filteredArrayUsingPredicate:teamPredicate];
         
-        NSLog(@"");
+        //Temperature is an enum, but this is the easiest way to loop all possible values
+        NSMutableArray *mutableTemperatureValues = [NSMutableArray arrayWithObjects:@-1, @-1, @-1, @-1, @-1, nil];
+        NSUInteger totalTemperatureTypes = mutableTemperatureValues.count;
+        for(int i = 0; i < totalTemperatureTypes; i++) {
+            //Get all games that occurred at this temperature
+            NSPredicate *temperaturePredicate = [NSPredicate predicateWithFormat:@"gameTemperature = %d", i];
+            NSArray *gamesAtThisTemperature = [gamesInvolvingTeam filteredArrayUsingPredicate:temperaturePredicate];
+            
+            //Get win pct of these games
+            if(gamesAtThisTemperature.count > 0) {
+                double winPercentage = [self winPercentageForTeam:teamName withGames:gamesAtThisTemperature];
+                [mutableTemperatureValues setObject:@(winPercentage) atIndexedSubscript:i];
+            }
+            else {
+                [mutableTemperatureValues setObject:@(-1) atIndexedSubscript:i];
+            }
+        }
+        teamWeatherlytics.temperatureValues = mutableTemperatureValues;
+
+        NSMutableArray *mutableConditionValues = [NSMutableArray arrayWithObjects:@-1, @-1, @-1, @-1, @-1, @-1, nil];
+        NSUInteger totalConditionTypes = mutableConditionValues.count;
+        for(int i = 0; i < totalConditionTypes; i++) {
+            //Get all games that occurred at this condition
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"gameCondition = %d", i];
+            NSArray *gamesAtThisCondition = [gamesInvolvingTeam filteredArrayUsingPredicate:predicate];
+            
+            //Get win pct of these games
+            if(gamesAtThisCondition.count > 0) {
+                double winPercentage = [self winPercentageForTeam:teamName withGames:gamesAtThisCondition];
+                [mutableConditionValues setObject:@(winPercentage) atIndexedSubscript:i];
+            }
+            else {
+                [mutableConditionValues setObject:@(-1) atIndexedSubscript:i];
+            }
+        }
+        teamWeatherlytics.conditionValues = mutableConditionValues;
+
+        NSMutableArray *mutableWindValues = [NSMutableArray arrayWithObjects:@-1, @-1, @-1, @-1, nil];
+        NSUInteger totalWindTypes = mutableWindValues.count;
+        for(int i = 0; i < totalWindTypes; i++) {
+            //Get all games that occurred at this wind speed
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"gameWind = %d", i];
+            NSArray *gamesAtThisWindSpeed = [gamesInvolvingTeam filteredArrayUsingPredicate:predicate];
+            
+            //Get win pct of these games
+            if(gamesAtThisWindSpeed.count > 0) {
+                double winPercentage = [self winPercentageForTeam:teamName withGames:gamesAtThisWindSpeed];
+                [mutableWindValues setObject:@(winPercentage) atIndexedSubscript:i];
+            }
+            else {
+                [mutableWindValues setObject:@(-1) atIndexedSubscript:i];
+            }
+        }
+        teamWeatherlytics.windValues = mutableWindValues;
+        
+        NSMutableArray *mutableHumidityValues = [NSMutableArray arrayWithObjects:@-1, @-1, @-1, @-1, nil];
+        NSUInteger totalHumidityTypes = mutableHumidityValues.count;
+        for(int i = 0; i < totalHumidityTypes; i++) {
+            //Get all games that occurred at this condition
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"gameHumidity = %d", i];
+            NSArray *gamesAtThisHumidity = [gamesInvolvingTeam filteredArrayUsingPredicate:predicate];
+            
+            //Get win pct of these games
+            if(gamesAtThisHumidity.count > 0) {
+                double winPercentage = [self winPercentageForTeam:teamName withGames:gamesAtThisHumidity];
+                [mutableHumidityValues setObject:@(winPercentage) atIndexedSubscript:i];
+            }
+            else {
+                [mutableHumidityValues setObject:@(-1) atIndexedSubscript:i];
+            }
+        }
+        teamWeatherlytics.humidityValues = mutableHumidityValues;
+
+        NSMutableArray *mutablePressureValues = [NSMutableArray arrayWithObjects:@-1, @-1, @-1, nil];
+        NSUInteger totalPressureTypes = mutablePressureValues.count;
+        for(int i = 0; i < totalPressureTypes; i++) {
+            //Get all games that occurred at this condition
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"gamePressure = %d", i];
+            NSArray *gamesAtThisPressure = [gamesInvolvingTeam filteredArrayUsingPredicate:predicate];
+            
+            //Get win pct of these games
+            if(gamesAtThisPressure.count > 0) {
+                double winPercentage = [self winPercentageForTeam:teamName withGames:gamesAtThisPressure];
+                [mutablePressureValues setObject:@(winPercentage) atIndexedSubscript:i];
+            }
+            else {
+                [mutablePressureValues setObject:@(-1) atIndexedSubscript:i];
+            }
+        }
+        teamWeatherlytics.pressureValues = mutablePressureValues;
+
+        
+        NSMutableArray *mutableStadiumTypeValues = [NSMutableArray arrayWithObjects:@-1, @-1, @-1, nil];
+        NSUInteger totalStadiumTypes = mutableStadiumTypeValues.count;
+        for(int i = 0; i < totalStadiumTypes; i++) {
+            //Get all games that occurred at this stadium type
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"stadiumType = %d", i];
+            NSArray *gamesAtThisStadiumType = [gamesInvolvingTeam filteredArrayUsingPredicate:predicate];
+            
+            //Get win pct of these games
+            if(gamesAtThisStadiumType.count > 0) {
+                double winPercentage = [self winPercentageForTeam:teamName withGames:gamesAtThisStadiumType];
+                [mutableStadiumTypeValues setObject:@(winPercentage) atIndexedSubscript:i];
+            }
+            else {
+                [mutableStadiumTypeValues setObject:@(-1) atIndexedSubscript:i];
+            }
+        }
+        teamWeatherlytics.stadiumTypeValues = mutableStadiumTypeValues;
+        
+        
+        [leagueWeatherlytics addObject:teamWeatherlytics];
     }
+    
+    
+    NSLog(@"");
 }
 
 #pragma mark - Team Locations
@@ -177,14 +314,17 @@
     else if([condition rangeOfString:@"sun"].location != NSNotFound) {
         gameCondition = WSCGameConditionSunny;
     }
-    else if([condition rangeOfString:@"rain"].location != NSNotFound) {
+    else if(([condition rangeOfString:@"rain"].location != NSNotFound)||([condition rangeOfString:@"storm"].location != NSNotFound)) {
         gameCondition = WSCGameConditionRain;
     }
     else if([condition rangeOfString:@"snow"].location != NSNotFound) {
         gameCondition = WSCGameConditionSnow;
     }
-    else if([condition rangeOfString:@"fair"].location != NSNotFound) {
+    else if(([condition rangeOfString:@"fair"].location != NSNotFound)||([condition rangeOfString:@"clear"].location != NSNotFound)) {
         gameCondition = WSCGameConditionFair;
+    }
+    else if([condition rangeOfString:@"fog"].location != NSNotFound) {
+        gameCondition = WSCGameConditionFog;
     }
     else {
         NSLog(@"NEW CONDITION TYPE!");
@@ -250,4 +390,30 @@
     return gamePressure;
 }
 
+#pragma mark - Win Percentage
+
+- (double)winPercentageForTeam:(NSString *)team withGames:(NSArray *)games {
+    //get wins
+    NSPredicate *winHomePredicate = [NSPredicate predicateWithFormat:@"homeTeam = %@ AND homeScore > awayScore", team];
+    NSPredicate *winAwayPredicate = [NSPredicate predicateWithFormat:@"awayTeam = %@ AND awayScore > homeScore", team];
+    NSCompoundPredicate *winPredicate = [[NSCompoundPredicate alloc] initWithType:NSOrPredicateType subpredicates:@[winHomePredicate, winAwayPredicate]];
+    
+    NSArray *wins = [games filteredArrayUsingPredicate:winPredicate];
+    
+    //get losses
+    NSPredicate *lossHomePredicate = [NSPredicate predicateWithFormat:@"homeTeam = %@ AND homeScore < awayScore", team];
+    NSPredicate *lossAwayPredicate = [NSPredicate predicateWithFormat:@"awayTeam = %@ AND awayScore < homeScore", team];
+    NSCompoundPredicate *lossPredicate = [[NSCompoundPredicate alloc] initWithType:NSOrPredicateType subpredicates:@[lossHomePredicate, lossAwayPredicate]];
+    NSArray *losses = [games filteredArrayUsingPredicate:lossPredicate];
+    
+    //count ties as 1/2
+    NSPredicate *tiePredicate = [NSPredicate predicateWithFormat:@"homeScore = awayScore"];
+    NSArray *ties = [games filteredArrayUsingPredicate:tiePredicate];
+    
+    
+    //calculate win percentage
+    double winPercentage = (wins.count + ties.count * 0.5) / (wins.count + losses.count + ties.count);
+    
+    return winPercentage;
+}
 @end

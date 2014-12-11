@@ -67,7 +67,13 @@ NSString * const apiGames =      @"games";
         game.awayTeam = [gameDict objectForKey:@"away"];
         game.homeScore = @([[gameDict objectForKey:@"home_score"] integerValue]);
         game.awayScore = @([[gameDict objectForKey:@"away_score"] integerValue]);
-        
+        NSNumber *finalNumber = [gameDict objectForKey:@"final"] ;
+        if([finalNumber integerValue] == 1) {
+            game.isFinal = YES;
+        }
+        else {
+            game.isFinal = NO;
+        }
         //Get the game start time and convert to GMT (for easy comparison)
         NSDate *gameTime = [NSDate dateWithTimeIntervalSince1970:[[gameDict objectForKey:@"time"] integerValue]];
         NSTimeZone *tz = [NSTimeZone localTimeZone];

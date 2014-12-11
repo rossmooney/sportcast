@@ -38,7 +38,8 @@ enum {
     WSCGameConditionCloudy,
     WSCGameConditionRain,
     WSCGameConditionSnow,
-    WSCGameConditionFair
+    WSCGameConditionFair,
+    WSCGameConditionFog
 };
 typedef NSUInteger WSCGameCondition;
 
@@ -66,18 +67,28 @@ enum {
 };
 typedef NSUInteger WSCGamePressure;
 
+enum {
+    WSCGameStadiumOpen,
+    WSCGameStadiumDome,
+    WSCGameStadiumRetractable
+};
+typedef NSUInteger WSCGameStadiumType;
+
 
 @interface WSCGame : NSObject
 
 //Game Information
-@property (nonatomic, assign) long              gameId;
-@property (nonatomic, strong) NSDate            *date;
-@property (nonatomic, strong) NSString          *homeTeam;
-@property (nonatomic, strong) NSString          *awayTeam;
-@property (nonatomic, strong) NSNumber          *homeScore;
-@property (nonatomic, strong) NSNumber          *awayScore;
-@property (nonatomic, assign) BOOL              isNightGame;
-@property (nonatomic, assign) WSCGameSeasonType seasonType;
+@property (nonatomic, assign) long               gameId;
+@property (nonatomic, strong) NSDate             *date;
+@property (nonatomic, strong) NSString           *homeTeam;
+@property (nonatomic, strong) NSString           *awayTeam;
+@property (nonatomic, strong) NSNumber           *homeScore;
+@property (nonatomic, strong) NSNumber           *awayScore;
+@property (nonatomic, assign) BOOL               isNightGame;
+@property (nonatomic, assign) BOOL               isFinal;
+@property (nonatomic, assign) WSCGameSeasonType  seasonType;
+@property (nonatomic, assign) WSCGameStadiumType stadiumType;
+
 
 //Weather Information
 @property (nonatomic, assign) WSCGameTemperature   gameTemperature;

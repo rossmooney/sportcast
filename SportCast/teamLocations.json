@@ -1,130 +1,162 @@
 {
 	"TEN":
 		{
-			"stadiumCoordinates" : "(36.16,-86.77)"
+			"stadiumCoordinates" : "(36.16,-86.77)",
+            "stadiumType" : "open"
 		},
 	"NYG":
 		{
-			"stadiumCoordinates" : "(40.81,-74.07)"
+            "stadiumCoordinates" : "(40.81,-74.07)",
+            "stadiumType" : "open"
 		},
 	"PIT":
 		{
-			"stadiumCoordinates" : "(40.44,-80.01)"
+            "stadiumCoordinates" : "(40.44,-80.01)",
+            "stadiumType" : "open"
 		},
 	"CAR":
 		{
-			"stadiumCoordinates" : "(35.22,-80.85)"
+            "stadiumCoordinates" : "(35.22,-80.85)",
+            "stadiumType" : "open"
 		},
 	"BAL":
 		{
-			"stadiumCoordinates" : "(39.27,-76.62)"
+            "stadiumCoordinates" : "(39.27,-76.62)",
+            "stadiumType" : "open"
 		},
 	"TB":
 		{
-			"stadiumCoordinates" : "(27.97,-82.50)"
+            "stadiumCoordinates" : "(27.97,-82.50)",
+            "stadiumType" : "open"
 		},
 	"IND":
 		{
-			"stadiumCoordinates" : "(39.76,-86.16)"
+            "stadiumCoordinates" : "(39.76,-86.16)",
+            "stadiumType" : "retractable"
 		},
 	"MIN":
 		{
-			"stadiumCoordinates" : "(44.97,-93.25)"
+            "stadiumCoordinates" : "(44.97,-93.25)",
+            "stadiumType" : "open"
 		},
 	"ARI":
 		{
-			"stadiumCoordinates" : "(33.52,-112.26)"
+            "stadiumCoordinates" : "(33.52,-112.26)",
+            "stadiumType" : "retractable"
 		},
 	"DAL":
 		{
-			"stadiumCoordinates" : "(32.74,-97.09)"
+            "stadiumCoordinates" : "(32.74,-97.09)",
+            "stadiumType" : "retractable"
 		},
 	"ATL":
 		{
-			"stadiumCoordinates" : "(33.75,-84.40)"
+            "stadiumCoordinates" : "(33.75,-84.40)",
+            "stadiumType" : "dome"
 		},
 	"NYJ":
 		{
-			"stadiumCoordinates" : "(40.81,-74.07)"
+            "stadiumCoordinates" : "(40.81,-74.07)",
+            "stadiumType" : "open"
 		},
 	"DEN":
 		{
-			"stadiumCoordinates" : "(39.74,-105.02)"
+            "stadiumCoordinates" : "(39.74,-105.02)",
+            "stadiumType" : "open"
 		},
 	"MIA":
 		{
-			"stadiumCoordinates" : "(25.95,-80.23)"
+            "stadiumCoordinates" : "(25.95,-80.23)",
+            "stadiumType" : "open"
 		},
 	"PHI":
 		{
-			"stadiumCoordinates" : "(39.90,-75.16)"
+            "stadiumCoordinates" : "(39.90,-75.16)",
+            "stadiumType" : "open"
 		},
 	"CHI":
 		{
-			"stadiumCoordinates" : "(41.86,-87.61)"
+            "stadiumCoordinates" : "(41.86,-87.61)",
+            "stadiumType" : "open"
 		},
 	"NE":
 		{
-			"stadiumCoordinates" : "(42.09,-71.26)"
+            "stadiumCoordinates" : "(42.09,-71.26)",
+            "stadiumType" : "open"
 		},
 	"WAS":
 		{
-			"stadiumCoordinates" : "(38.90,-76.86)"
+            "stadiumCoordinates" : "(38.90,-76.86)",
+            "stadiumType" : "open"
 		},
 	"GB":
 		{
-			"stadiumCoordinates" : "(44.50,-88.06)"
+            "stadiumCoordinates" : "(44.50,-88.06)",
+            "stadiumType" : "open"
 		},
 	"SD":
 		{
-			"stadiumCoordinates" : "(32.78,-117.11)"
+            "stadiumCoordinates" : "(32.78,-117.11)",
+            "stadiumType" : "open"
 		},
 	"NO":
 		{
-			"stadiumCoordinates" : "(29.95,-90.08)"
+            "stadiumCoordinates" : "(29.95,-90.08)",
+            "stadiumType" : "dome"
 		},
 	"HOU":
 		{
-			"stadiumCoordinates" : "(29.68,-95.41)"
+            "stadiumCoordinates" : "(29.68,-95.41)",
+            "stadiumType" : "retractable"
 		},
 	"BUF":
 		{
-			"stadiumCoordinates" : "(42.77,-78.78)"
+            "stadiumCoordinates" : "(42.77,-78.78)",
+            "stadiumType" : "open"
 		},
 	"SF":
 		{
-			"stadiumCoordinates" : "(37.71,-122.38)"
+            "stadiumCoordinates" : "(37.71,-122.38)",
+            "stadiumType" : "open"
 		},
 	"JAC":
 		{
-			"stadiumCoordinates" : "(30.32,-81.63)"
+            "stadiumCoordinates" : "(30.32,-81.63)",
+            "stadiumType" : "open"
 		},
 	"CLE":
 		{
-			"stadiumCoordinates" : "(41.50,-81.69)"
+            "stadiumCoordinates" : "(41.50,-81.69)",
+            "stadiumType" : "open"
 		},
 	"OAK":
 		{
-			"stadiumCoordinates" : "(37.75,-122.20)"
+            "stadiumCoordinates" : "(37.75,-122.20)",
+            "stadiumType" : "open"
 		},
 	"KC":
 		{
-			"stadiumCoordinates" : "(39.04,-94.48)"
+            "stadiumCoordinates" : "(39.04,-94.48)",
+            "stadiumType" : "open"
 		},
 	"STL":
 		{
-			"stadiumCoordinates" : "(38.63,-90.18)"
+            "stadiumCoordinates" : "(38.63,-90.18)",
+            "stadiumType" : "dome"
 		},
 	"SEA":
 		{
-			"stadiumCoordinates" : "(47.59,-122.33)"
+            "stadiumCoordinates" : "(47.59,-122.33)",
+            "stadiumType" : "open"
 		},
 	"CIN":
 		{
-			"stadiumCoordinates" : "(39.09,-84.51)"
+            "stadiumCoordinates" : "(39.09,-84.51)",
+            "stadiumType" : "open"
 		},
 	"DET":
 		{
-			"stadiumCoordinates" : "(42.34,-83.04)"
+            "stadiumCoordinates" : "(42.34,-83.04)",
+            "stadiumType" : "dome"
 		}
 }
