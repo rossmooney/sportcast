@@ -15,12 +15,16 @@
 #import "WSCScheduleDay.h"
 #import "WSCGame.h"
 #import "NSDate+NoTime.h"
+#import "GameCell.h"
+#import "SectionHeaderCell.h"
+#import "WXWeatherDataService/WXWeatherDataService.h"
 
 
 @interface WSCMainViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *schedule;
 @property (nonatomic, weak) IBOutlet UITableView *scheduleTableView;
+@property (nonatomic, strong) NSDictionary *teamData;
 
 @end
 
@@ -33,7 +37,7 @@
 //    [[WSCProFootballAPI sharedInstance] setGames: [[WSCCoreDataManager sharedInstance] loadGames]];
 //    [self runAnalysis];
 //    
-    
+    [self loadTeamData];
     [self loadSchedule];
     
     self.scheduleTableView.backgroundColor = [UIColor clearColor];
@@ -42,6 +46,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadTeamData {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"teamLocations" ofType:@"json"];
+    NSData *teamData = [[NSFileManager defaultManager] contentsAtPath:path];
+    
+    NSError *localError = nil;
+    NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:teamData options:0 error:&localError];
+    
+    self.teamData = parsedObject;
 }
 
 - (void)loadSchedule {
@@ -100,30 +114,45 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"GameCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    GameCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = (GameCell *)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
     }
 
     cell.backgroundColor = [UIColor clearColor];
-    // Do something to cell
+    
+    WSCScheduleDay *day = self.schedule[indexPath.section];
+    WSCGame *game = day.games[indexPath.row];
+    
+    cell.homeTeam.text = [[self.teamData objectForKey:game.homeTeam] objectForKey:@"shortName"];
+    cell.awayTeam.text = [[self.teamData objectForKey:game.awayTeam] objectForKey:@"shortName"];
+    
+    if(!cell.hasWeatherData && indexPath.section == 0 && indexPath.row == 0) {
+        [self requestWeatherDataForCell:cell withGame:game];
+    }
     
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     NSString *cellIdentifier = @"dateSectionHeader";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    SectionHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = (SectionHeaderCell *)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
     }
     
     cell.backgroundColor = [UIColor clearColor];
-    // Do something to cell
+    WSCScheduleDay *day = [self.schedule objectAtIndex:section];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEEE, MMMM dd"];
+    NSString *convertedDateString = [dateFormatter stringFromDate:day.date];
+    
+    cell.date.text = convertedDateString;
     
     return cell;
 }
@@ -135,6 +164,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+#pragma mark - Weather Data
+
+- (void)requestWeatherDataForCell:(GameCell *)cell withGame:(WSCGame *)game {
+    cell.hasWeatherData = YES;
+    NSString *coordinates = [[self.teamData objectForKey:game.homeTeam] objectForKey:@"stadiumCoordinates"];
+    [[WXWeatherDataService sharedInstance] requestDailyForecastWithLocationKey:coordinates completionHandler:^(NSArray *dailyForecast, NSError *error) {
+        
+        
+        for(WXDailyForecast *forecast in dailyForecast) {
+            if([[forecast.forecastDateUTC dateWithoutTime] isEqualToDate:[game.date dateWithoutTime]]) {
+                cell.temperature.text = forecast.temperature.high;
+                cell.weatherIcon.image = (UIImage *)forecast.weatherIcon;
+                cell.detailWeather.text = forecast.phrase12;
+            }
+        }
+    }];
 }
 
 @end

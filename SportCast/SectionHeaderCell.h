@@ -10,6 +10,6 @@
 
 @interface SectionHeaderCell : UITableViewCell
 
-@property (nonatomic, weak) UILabel *date;
+@property (nonatomic, weak) IBOutlet UILabel *date;
 
 @end

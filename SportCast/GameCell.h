@@ -17,6 +17,6 @@
 @property (nonatomic, weak) IBOutlet UILabel        *temperature;
 @property (nonatomic, weak) IBOutlet UILabel        *detailWeather;
 @property (nonatomic, weak) IBOutlet UIImageView    *weatherIcon;
-
+@property (nonatomic, assign) BOOL                  hasWeatherData;
 
 @end

@@ -85,6 +85,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="jjO-QL-TSJ" secondAttribute="bottom" id="peD-qZ-vBX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="date" destination="h0e-Yi-ZHg" id="Vyo-Qr-fjk"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GameCell" rowHeight="100" id="Dou-NT-EQO" userLabel="Game Cell" customClass="GameCell">
                                         <autoresizingMask key="autoresizingMask"/>
