@@ -228,7 +228,7 @@
     [[WSCCoreDataManager sharedInstance] saveGames:self.games];
     
     //Save all weatherlytics
-    
+    [[WSCCoreDataManager sharedInstance] saveWeatherlytics:leagueWeatherlytics];
     
     //Return array of all weatherlytics for teams
     if(self.completionHandler) {

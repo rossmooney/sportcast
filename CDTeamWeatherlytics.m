@@ -18,7 +18,7 @@
 @dynamic temperatureValues;
 @dynamic windValues;
 @dynamic pressureValues;
-@dynamic condiitionValues;
+@dynamic conditionValues;
 @dynamic humidityValues;
 
 @end

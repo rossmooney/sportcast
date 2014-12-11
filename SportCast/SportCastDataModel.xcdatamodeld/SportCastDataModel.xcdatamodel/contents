@@ -21,7 +21,7 @@
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="team" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="condiitionValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>
+        <relationship name="conditionValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>
         <relationship name="humidityValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>
         <relationship name="pressureValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>
         <relationship name="temperatureValues" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDValueArray" syncable="YES"/>

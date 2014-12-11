@@ -19,7 +19,7 @@
 @property (nonatomic, retain) CDValueArray *temperatureValues;
 @property (nonatomic, retain) CDValueArray *windValues;
 @property (nonatomic, retain) CDValueArray *pressureValues;
-@property (nonatomic, retain) CDValueArray *condiitionValues;
+@property (nonatomic, retain) CDValueArray *conditionValues;
 @property (nonatomic, retain) CDValueArray *humidityValues;
 
 @end

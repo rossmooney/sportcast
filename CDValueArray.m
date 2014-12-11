@@ -11,11 +11,11 @@
 
 @implementation CDValueArray
 
-@dynamic value0;
-@dynamic value1;
-@dynamic value2;
-@dynamic value3;
-@dynamic value4;
-@dynamic value5;
+//@dynamic value0;
+//@dynamic value1;
+//@dynamic value2;
+//@dynamic value3;
+//@dynamic value4;
+//@dynamic value5;
 
 @end

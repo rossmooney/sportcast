@@ -8,8 +8,10 @@
 
 #import "WSCCoreDataManager.h"
 #import "WSCGame.h"
+#import "WSCWeatherlytics.h"
 #import "CDGame.h"
 #import "CDValueArray.h"
+#import "CDTeamWeatherlytics.h"
 
 @implementation WSCCoreDataManager
 
@@ -124,6 +126,86 @@
     return gameArray;
 }
 
+
+- (void)saveWeatherlytics:(NSArray *)leagueWeatherlytics {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    for(WSCWeatherlytics *weatherlytics in leagueWeatherlytics) {
+        //Check if game is already saved
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"team = %@", weatherlytics.team];
+        [fetchRequest setPredicate:predicate];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"CDTeamWeatherlytics"
+                                                  inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        NSError *error;
+        NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+        
+        CDTeamWeatherlytics *cdTeamWeatherlytics;
+        if(fetchedObjects.count > 0) {
+            //if yes, update it
+            cdTeamWeatherlytics = (CDTeamWeatherlytics *)fetchedObjects[0];
+            
+            NSError *error;
+            if (![context save:&error]) {
+                NSLog(@"Whoops, couldn't update: %@", [error localizedDescription]);
+            }
+        }
+        else {
+            //otherwise create new record
+            cdTeamWeatherlytics = (CDTeamWeatherlytics *)[NSEntityDescription
+                                insertNewObjectForEntityForName:@"CDTeamWeatherlytics"
+                                inManagedObjectContext:context];
+            
+        }
+
+        cdTeamWeatherlytics.team = weatherlytics.team;
+        cdTeamWeatherlytics.startDate = weatherlytics.startDate;
+        cdTeamWeatherlytics.endDate = weatherlytics.endDate;
+        cdTeamWeatherlytics.temperatureValues = [self valueArrayFromNumberArray:weatherlytics.temperatureValues];
+        cdTeamWeatherlytics.windValues = [self valueArrayFromNumberArray:weatherlytics.windValues];
+        cdTeamWeatherlytics.pressureValues = [self valueArrayFromNumberArray:weatherlytics.pressureValues];
+        cdTeamWeatherlytics.humidityValues = [self valueArrayFromNumberArray:weatherlytics.humidityValues];
+        
+        cdTeamWeatherlytics.conditionValues = [self valueArrayFromNumberArray:weatherlytics.conditionValues];
+        
+        //save changes
+        if (![context save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+    }
+}
+
+- (NSArray *)loadWeatherlytics {
+    NSMutableArray *weatherlyticsArray = [NSMutableArray array];
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CDTeamWeatherlytics"
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSError *error;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    
+    for(CDTeamWeatherlytics *cdTeamWeatherlytics in fetchedObjects) {
+        WSCWeatherlytics *weatherlytics = [[WSCWeatherlytics alloc] init];
+        
+        weatherlytics.team = cdTeamWeatherlytics.team;
+        weatherlytics.startDate = cdTeamWeatherlytics.startDate;
+        weatherlytics.endDate = cdTeamWeatherlytics.endDate;
+        weatherlytics.temperatureValues = [self numberArrayFromValueArray:cdTeamWeatherlytics.temperatureValues withCount:5];
+        weatherlytics.windValues = [self numberArrayFromValueArray:cdTeamWeatherlytics.temperatureValues withCount:4];
+        weatherlytics.pressureValues = [self numberArrayFromValueArray:cdTeamWeatherlytics.temperatureValues withCount:3];
+        weatherlytics.humidityValues = [self numberArrayFromValueArray:cdTeamWeatherlytics.temperatureValues withCount:4];
+        
+        weatherlytics.conditionValues = [self numberArrayFromValueArray:cdTeamWeatherlytics.temperatureValues withCount:6];
+        
+        [weatherlyticsArray addObject:weatherlytics];
+    }
+    
+    return weatherlyticsArray;
+}
 
 #pragma mark - Core Data
 
@@ -244,7 +326,15 @@
         [valueArray setValue5:numberArray[5]];
     }
     
-    return numberArray;
+    return valueArray;
+}
+
+- (NSArray *)numberArrayFromValueArray:(CDValueArray *)valueArray withCount:(NSUInteger)count {
+    NSArray *numberArray = [NSArray arrayWithObjects:valueArray.value0, valueArray.value1, valueArray.value2, valueArray.value3, valueArray.value4, valueArray.value5, nil];
+    
+    NSArray *returnArray = [numberArray subarrayWithRange:NSMakeRange(0, count)];
+    
+    return returnArray;
 }
 
 @end

@@ -20,5 +20,6 @@
 - (NSURL *)applicationDocumentsDirectory;
 
 - (void)saveGames:(NSArray *)games;
+- (void)saveWeatherlytics:(NSArray *)leagueWeatherlytics;
 - (NSArray *)loadGames;
 @end
