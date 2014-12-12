@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSArray *schedule;
 @property (nonatomic, weak) IBOutlet UITableView *scheduleTableView;
 @property (nonatomic, strong) NSDictionary *teamData;
+@property (nonatomic, strong) NSIndexPath *expandedCell;
 
 @end
 
@@ -33,10 +34,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSArray *leagueWeatherlytics = [[WSCCoreDataManager sharedInstance] loadWeatherlytics];
+    [[WSCWeatherlyticsGenerator sharedInstance] setLeagueWeatherlytics:leagueWeatherlytics];
+    [[WSCProFootballAPI sharedInstance] setGames: [[WSCCoreDataManager sharedInstance] loadGames]];
+    [self runAnalysis];
+
     
-//    [[WSCProFootballAPI sharedInstance] setGames: [[WSCCoreDataManager sharedInstance] loadGames]];
-//    [self runAnalysis];
-//    
+    
     [self loadTeamData];
     [self loadSchedule];
     
@@ -119,17 +123,29 @@
     if (nil == cell) {
         cell = (GameCell *)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
+        cell.selectedBackgroundView = nil;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
 
+    
     cell.backgroundColor = [UIColor clearColor];
     
     WSCScheduleDay *day = self.schedule[indexPath.section];
     WSCGame *game = day.games[indexPath.row];
-    
+    cell.game = game;
     cell.homeTeam.text = [[self.teamData objectForKey:game.homeTeam] objectForKey:@"shortName"];
     cell.awayTeam.text = [[self.teamData objectForKey:game.awayTeam] objectForKey:@"shortName"];
     
-    if(!cell.hasWeatherData && indexPath.section == 0 && indexPath.row == 0) {
+    if(self.expandedCell && indexPath.row == self.expandedCell.row && indexPath.section == self.expandedCell.section) {
+        cell.awayTeamContainer.hidden = NO;
+    }
+    else {
+        cell.awayTeamContainer.hidden = YES;
+    }
+    
+    
+    if(!cell.hasWeatherData) {
         [self requestWeatherDataForCell:cell withGame:game];
     }
     
@@ -163,7 +179,29 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSIndexPath *previouslySelected = self.expandedCell;
+    if(self.expandedCell && self.expandedCell.section == indexPath.section && self.expandedCell.row == indexPath.row) {
+        self.expandedCell = nil;
+    }
+    else {
+        self.expandedCell = indexPath;
+    }
+//    if(previouslySelected && !(previouslySelected.row == indexPath.row && previouslySelected.section == indexPath.section)) {
+//        [self.scheduleTableView reloadRowsAtIndexPaths:@[previouslySelected, indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    }
+//    else {
+//        [self.scheduleTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    }
     
+    [self.scheduleTableView reloadData];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.expandedCell && self.expandedCell.section == indexPath.section && self.expandedCell.row == indexPath.row) {
+        return 420;
+    }
+    return 120;
 }
 
 #pragma mark - Weather Data
@@ -171,17 +209,39 @@
 - (void)requestWeatherDataForCell:(GameCell *)cell withGame:(WSCGame *)game {
     cell.hasWeatherData = YES;
     NSString *coordinates = [[self.teamData objectForKey:game.homeTeam] objectForKey:@"stadiumCoordinates"];
-    [[WXWeatherDataService sharedInstance] requestDailyForecastWithLocationKey:coordinates completionHandler:^(NSArray *dailyForecast, NSError *error) {
-        
-        
-        for(WXDailyForecast *forecast in dailyForecast) {
-            if([[forecast.forecastDateUTC dateWithoutTime] isEqualToDate:[game.date dateWithoutTime]]) {
-                cell.temperature.text = forecast.temperature.high;
-                cell.weatherIcon.image = (UIImage *)forecast.weatherIcon;
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour
+                                                                   fromDate:game.date];
+    long gameHour = components.hour - [[NSTimeZone localTimeZone] secondsFromGMT]/3600;
+    [[WXWeatherDataService sharedInstance] requestHourlyForecastWithLocationKey:coordinates completionHandler:^(NSArray *hourlyForecast, NSError *error) {
+        for(WXHourlyForecast *forecast in hourlyForecast) {
+            NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour
+                                                                           fromDate:forecast.forecastDateUTC];
+            long hourNumber = components.hour;
+            
+            if(hourNumber == gameHour) {
+                cell.temperature.text = [forecast.temperature substringToIndex:forecast.temperature.length - 1];
+                cell.weatherIcon = forecast.weatherIcon.UIImage;
                 cell.detailWeather.text = forecast.phrase12;
+                
+                WSCGameCondition condition = [[WSCWeatherlyticsGenerator sharedInstance] gameConditionWithString:forecast.phrase12];
+                WSCGameTemperature temperature = [[WSCWeatherlyticsGenerator sharedInstance] gameTemperatureWithString:forecast.temperature];
+                WSCGameWind wind = [[WSCWeatherlyticsGenerator sharedInstance] gameWindWithString:forecast.wind.speed];
+//                WSCGamePressure pressure = [[WSCWeatherlyticsGenerator sharedInstance] gamePressureWithString:forecast.]
+                WSCGameHumidity humidity = [[WSCWeatherlyticsGenerator sharedInstance] gameHumidityWithString:forecast.relativeHumidity];
+                
+                cell.game.gameCondition = condition;
+                cell.game.gameHumidity = humidity;
+                cell.game.gameTemperature = temperature;
+                cell.game.gameWind = wind;
+                break;
             }
         }
     }];
+//    [[WXWeatherDataService sharedInstance] requestDailyForecastWithLocationKey:coordinates completionHandler:^(NSArray *dailyForecast, NSError *error) {
+//        
+//        
+//
+//    }];
 }
 
 @end

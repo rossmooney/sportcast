@@ -21,5 +21,6 @@
 
 - (void)saveGames:(NSArray *)games;
 - (void)saveWeatherlytics:(NSArray *)leagueWeatherlytics;
+- (NSArray *)loadWeatherlytics;
 - (NSArray *)loadGames;
 @end

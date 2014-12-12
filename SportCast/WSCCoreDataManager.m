@@ -83,6 +83,7 @@
         cdGame.gameTemperature = @(game.gameTemperature);
         cdGame.gamePressure = @(game.gamePressure);
         cdGame.gameWind = @(game.gameWind);
+        cdGame.isFinal = @(game.isFinal);
     
         //save changes
         if (![context save:&error]) {
@@ -118,6 +119,7 @@
         game.gameWind = [cdGame.gameWind integerValue];
         game.gameId = [cdGame.gameid longLongValue];;
         //We only save games that have been analyzed
+        game.isFinal = [cdGame.isFinal boolValue];
         game.analyzed = YES;
         
         [gameArray addObject:game];
@@ -306,9 +308,12 @@
 #pragma mark - Helper Methods
 
 - (CDValueArray *)valueArrayFromNumberArray:(NSArray *)numberArray {
-    CDValueArray *valueArray = [[CDValueArray alloc] init];
+     NSManagedObjectContext *context = [self managedObjectContext];
+    CDValueArray *valueArray = (CDValueArray *)[NSEntityDescription
+                                                  insertNewObjectForEntityForName:@"CDValueArray"
+                                                  inManagedObjectContext:context];
     if(numberArray.count > 0) {
-        [valueArray setValue0:numberArray[0]];
+        valueArray.value0 = numberArray[0];
     }
     if(numberArray.count > 1) {
         [valueArray setValue1:numberArray[1]];

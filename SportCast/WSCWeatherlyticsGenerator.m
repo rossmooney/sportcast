@@ -17,6 +17,7 @@
 
 @interface WSCWeatherlyticsGenerator ()
 
+
 @property (nonatomic, strong) NSDictionary *teamLocations;
 @property (nonatomic, strong) NSArray      *games;
 
@@ -52,13 +53,27 @@
     return self;
 }
 
+#pragma mark - Accessing Weatherlytics 
+
+- (WSCWeatherlytics *)weatherlyticsForTeam:(NSString *)team {
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"team = %@", team];
+    NSArray *filteredArray = [self.leagueWeatherlytics filteredArrayUsingPredicate:filter];
+    if(filteredArray.count > 0) {
+        WSCWeatherlytics *weatherlytics = filteredArray[0];
+        return weatherlytics;
+    }
+    
+    return nil;
+}
+
 #pragma mark - Weatherlytics Generation
 
 - (void)generateWeatherlyticsWithGames:(NSArray *)games andCompletionHandler:(void (^)(void))completion{
+    NSLog(@"generateWeatherlyticsWithGames");
     self.completionHandler = completion;
     
     //only use games that have finished
-    NSPredicate *finalPredicate = [NSPredicate predicateWithFormat:@"isFinal == 1 AND analyzed == 0"];
+    NSPredicate *finalPredicate = [NSPredicate predicateWithFormat:@"isFinal == 1"];// AND analyzed == 0"];
     self.games = [games filteredArrayUsingPredicate:finalPredicate];
 
     self.totalGames = self.games.count;
@@ -98,6 +113,7 @@
 }
 
 - (void)finishAnalysis {
+    NSLog(@"finishAnalysis");
     NSMutableArray *leagueWeatherlytics = [NSMutableArray array];
     
     //Analyze all teams
@@ -228,10 +244,12 @@
     [[WSCCoreDataManager sharedInstance] saveGames:self.games];
     
     //Save all weatherlytics
+    self.leagueWeatherlytics = leagueWeatherlytics;
     [[WSCCoreDataManager sharedInstance] saveWeatherlytics:leagueWeatherlytics];
     
     //Return array of all weatherlytics for teams
     if(self.completionHandler) {
+        NSLog(@"analysisComplete");
         self.completionHandler();
     }
 }
@@ -252,6 +270,7 @@
 
 - (void)requestWeatherDataWithLocation:(NSString *)coordinates andGame:(WSCGame *)game {
     //http://dsx.weather.com/wxd/PastObs/20131123/2/USGA0038:1:US
+    NSLog(@"requestingWeatherData with coordinates:%@", coordinates);
     
     //Build url string
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -426,7 +445,7 @@
     
     //calculate win percentage
     double winPercentage = (wins.count + ties.count * 0.5) / (wins.count + losses.count + ties.count);
-    
+    NSLog(@"winpercentage for team %@ = %f", team, winPercentage);
     return winPercentage;
 }
 @end

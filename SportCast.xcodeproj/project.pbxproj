@@ -31,6 +31,7 @@
 		716EDBAD1A37A788007F330B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 716EDBAC1A37A788007F330B /* Images.xcassets */; };
 		716EDBB01A37A788007F330B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716EDBAE1A37A788007F330B /* LaunchScreen.xib */; };
 		716EDBBC1A37A788007F330B /* SportCastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 716EDBBB1A37A788007F330B /* SportCastTests.m */; };
+		719154AB1A3A77450037D870 /* WeatherStatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 719154AA1A3A77450037D870 /* WeatherStatCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		716EDBB51A37A788007F330B /* SportCastTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportCastTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		716EDBBA1A37A788007F330B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		716EDBBB1A37A788007F330B /* SportCastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportCastTests.m; sourceTree = "<group>"; };
+		719154A91A3A77450037D870 /* WeatherStatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherStatCell.h; sourceTree = "<group>"; };
+		719154AA1A3A77450037D870 /* WeatherStatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherStatCell.m; sourceTree = "<group>"; };
 		83B1453DABD5D024A434BC3A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A106136C67499DB717DE56F8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +209,8 @@
 				715D7E0A1A3A422E0007FC38 /* SectionHeaderCell.m */,
 				715D7E001A3A38870007FC38 /* GameCell.h */,
 				715D7E011A3A38870007FC38 /* GameCell.m */,
+				719154A91A3A77450037D870 /* WeatherStatCell.h */,
+				719154AA1A3A77450037D870 /* WeatherStatCell.m */,
 			);
 			name = "Cell Prototypes";
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 				7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */,
 				715D7E021A3A38870007FC38 /* GameCell.m in Sources */,
 				715D7DFE1A39FC550007FC38 /* WSCCoreDataManager.m in Sources */,
+				719154AB1A3A77450037D870 /* WeatherStatCell.m in Sources */,
 				715D7DFB1A39E9AF0007FC38 /* CDTeamWeatherlytics.m in Sources */,
 				715D7E051A3A396C0007FC38 /* WSCScheduleDay.m in Sources */,
 				715D7DF81A39E9AF0007FC38 /* CDValueArray.m in Sources */,

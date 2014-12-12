@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SVGKImage.h"
+@class WSCGame;
 @interface GameCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel        *homeTeam;
@@ -16,7 +17,14 @@
 @property (nonatomic, weak) IBOutlet UILabel        *awayRecord;
 @property (nonatomic, weak) IBOutlet UILabel        *temperature;
 @property (nonatomic, weak) IBOutlet UILabel        *detailWeather;
-@property (nonatomic, weak) IBOutlet UIImageView    *weatherIcon;
+@property (nonatomic, weak) IBOutlet UIImage        *weatherIcon;
+@property (nonatomic, weak) IBOutlet UICollectionView *homeCollectionView;
+@property (nonatomic, weak) IBOutlet UICollectionView *awayCollectionView;
+
 @property (nonatomic, assign) BOOL                  hasWeatherData;
 
+
+@property (nonatomic, weak) IBOutlet UIView         *awayTeamContainer;
+@property (nonatomic, weak) IBOutlet UIView         *homeTeamContainer;
+@property (nonatomic, strong) WSCGame *game;
 @end

@@ -41,18 +41,20 @@ NSString * const apiGames =      @"games";
 #pragma mark - API Methods
 
 - (void)requestUpcomingGamesForDays:(NSUInteger)days withCompletion:(void (^)(NSArray *))completion {
-    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth) fromDate:[NSDate date]];
-
+     NSDate *today = [[NSDate date] dateWithoutTime];
     
+    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth) fromDate:today];
+
+
     [[WSCNetworking sharedInstance] sendPostRequest:[NSString stringWithFormat:@"%@%@", apiUrl, apiSchedule] withParameters:@{@"api_key":apiKey, @"year":[NSString stringWithFormat:@"%d",components.year], @"month":[NSString stringWithFormat:@"%d",components.month]} completionHandler:^(NSData *data) {
         NSArray *games = [self gamesFromJSON:data error:nil];
         
         NSMutableArray *mutableGames = [NSMutableArray array];
-        NSDate *daysAgo = [[NSDate date] dateByAddingTimeInterval:(3600*24*days)];
+        NSDate *daysAgo = [today dateByAddingTimeInterval:(3600*24*days)];
         for(WSCGame *game in games) {
         
-            if(([[game.date dateWithoutTime] compare:daysAgo] == NSOrderedAscending)&&([[game.date dateWithoutTime] compare:[NSDate date]] == NSOrderedDescending)){
+            if(([[game.date dateWithoutTime] compare:daysAgo] == NSOrderedAscending)&&(([[game.date dateWithoutTime] compare:today] == NSOrderedDescending)||([[game.date dateWithoutTime] compare:today] == NSOrderedSame))){
                 [mutableGames addObject:game];
             }
         }
@@ -114,9 +116,9 @@ NSString * const apiGames =      @"games";
         }
         //Get the game start time and convert to GMT (for easy comparison)
         NSDate *gameTime = [NSDate dateWithTimeIntervalSince1970:[[gameDict objectForKey:@"time"] integerValue]];
-        NSTimeZone *tz = [NSTimeZone localTimeZone];
-        NSInteger seconds = -[tz secondsFromGMTForDate: gameTime];
-        gameTime = [NSDate dateWithTimeInterval: seconds sinceDate: gameTime];
+//        NSTimeZone *tz = [NSTimeZone localTimeZone];
+//        NSInteger seconds = -[tz secondsFromGMTForDate: gameTime];
+//        gameTime = [NSDate dateWithTimeInterval: seconds sinceDate: gameTime];
         game.date = gameTime;
         game.isNightGame = [self isNightTime:game.date];
 
