@@ -68,7 +68,13 @@
         int barX = -60 + i * barSpacing + 0.5 * barWidth;
         
         bar.frame = CGRectMake(barX, barY, barWidth, barHeight);
-        bar.progress = [weatherlyticsArray[i] floatValue];
+        if([weatherlyticsArray[i] floatValue] >= 0) {
+            bar.progress = [weatherlyticsArray[i] floatValue];
+        }
+        else {
+            bar.hidden = YES;
+            continue;
+        }
         
         [self addSubview:bar];
         [self.bars addObject:bar];

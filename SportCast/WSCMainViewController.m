@@ -32,6 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"SportCast";
     // Do any additional setup after loading the view, typically from a nib.
     NSArray *leagueWeatherlytics = [[WSCCoreDataManager sharedInstance] loadWeatherlytics];
     [[WSCWeatherlyticsGenerator sharedInstance] setLeagueWeatherlytics:leagueWeatherlytics];
@@ -141,9 +142,11 @@
     
     if(self.expandedCell && indexPath.row == self.expandedCell.row && indexPath.section == self.expandedCell.section) {
         cell.awayTeamContainer.hidden = NO;
+        cell.homeTeamContainer.hidden = NO;
     }
     else {
         cell.awayTeamContainer.hidden = YES;
+        cell.homeTeamContainer.hidden = YES;
     }
     
     
@@ -222,7 +225,7 @@
             
             if(hourNumber == gameHour) {
                 cell.temperature.text = [forecast.temperature substringToIndex:forecast.temperature.length - 1];
-                cell.weatherIcon = forecast.weatherIcon.UIImage;
+                cell.weatherIcon.image = forecast.weatherIcon.UIImage;
                 cell.detailWeather.text = forecast.phrase12;
                 
                 WSCGameCondition condition = [[WSCWeatherlyticsGenerator sharedInstance] gameConditionWithString:forecast.phrase12];

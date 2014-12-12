@@ -200,7 +200,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="65°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fv-VG-DFB">
                                                     <rect key="frame" x="545" y="29" width="55" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="75" id="7jy-e6-dYf"/>
+                                                        <constraint firstAttribute="width" constant="70" id="7jy-e6-dYf"/>
                                                         <constraint firstAttribute="height" constant="35" id="k44-pN-a8N"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="32"/>
@@ -439,7 +439,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="Fw3-vh-QA2" secondAttribute="bottom" id="OPb-3g-o5d"/>
                                                 <constraint firstAttribute="trailing" secondItem="Fw3-vh-QA2" secondAttribute="trailing" id="PuK-we-u3j"/>
                                                 <constraint firstItem="kga-M0-OIy" firstAttribute="top" secondItem="5fv-VG-DFB" secondAttribute="bottom" constant="15" id="Q7D-op-fmE"/>
-                                                <constraint firstAttribute="trailing" secondItem="5fv-VG-DFB" secondAttribute="trailing" constant="5" id="W6v-F7-XhQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="5fv-VG-DFB" secondAttribute="trailing" id="W6v-F7-XhQ"/>
                                                 <constraint firstItem="2ag-en-pXd" firstAttribute="top" secondItem="9pe-RB-6fw" secondAttribute="bottom" id="WSc-HY-lMV"/>
                                                 <constraint firstAttribute="bottom" secondItem="eHR-6I-Jq7" secondAttribute="bottom" constant="29" id="iYX-tp-Uwz"/>
                                                 <constraint firstItem="2ag-en-pXd" firstAttribute="leading" secondItem="zlk-2U-RF0" secondAttribute="leading" id="jBT-fF-wdv"/>
@@ -468,6 +468,7 @@
                                             <outlet property="homeTeamContainer" destination="Fw3-vh-QA2" id="rQ1-M6-SgT"/>
                                             <outlet property="homeTeamDetail" destination="hLe-Zy-5RC" id="X1e-wl-1zj"/>
                                             <outlet property="temperature" destination="5fv-VG-DFB" id="rlC-s1-fep"/>
+                                            <outlet property="weatherIcon" destination="eHR-6I-Jq7" id="2qC-Cm-bBV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
