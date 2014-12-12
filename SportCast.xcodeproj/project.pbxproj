@@ -15,6 +15,9 @@
 		7114CCB71A38CEC500B4C6E3 /* WSCNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */; };
 		713828FC1A3AC0930094DA12 /* WSCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713828FB1A3AC0930094DA12 /* WSCDetailViewController.m */; };
 		713828FF1A3AC13B0094DA12 /* StatDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 713828FE1A3AC13B0094DA12 /* StatDetailCell.m */; };
+		713829021A3AE5000094DA12 /* rain.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 713829001A3AE5000094DA12 /* rain.jpg */; };
+		713829031A3AE5000094DA12 /* snow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 713829011A3AE5000094DA12 /* snow.jpg */; };
+		713829051A3AE5B70094DA12 /* twc.gif in Resources */ = {isa = PBXBuildFile; fileRef = 713829041A3AE5B70094DA12 /* twc.gif */; };
 		715D7DDA1A39253B0007FC38 /* WSCWeatherlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */; };
 		715D7DDC1A39DE770007FC38 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715D7DDB1A39DE770007FC38 /* CoreData.framework */; };
 		715D7DE01A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DDE1A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld */; };
@@ -61,6 +64,9 @@
 		713828FB1A3AC0930094DA12 /* WSCDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCDetailViewController.m; sourceTree = "<group>"; };
 		713828FD1A3AC13B0094DA12 /* StatDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDetailCell.h; sourceTree = "<group>"; };
 		713828FE1A3AC13B0094DA12 /* StatDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatDetailCell.m; sourceTree = "<group>"; };
+		713829001A3AE5000094DA12 /* rain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rain.jpg; sourceTree = "<group>"; };
+		713829011A3AE5000094DA12 /* snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snow.jpg; sourceTree = "<group>"; };
+		713829041A3AE5B70094DA12 /* twc.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = twc.gif; sourceTree = "<group>"; };
 		715D7DD81A39253B0007FC38 /* WSCWeatherlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCWeatherlytics.h; sourceTree = "<group>"; };
 		715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCWeatherlytics.m; sourceTree = "<group>"; };
 		715D7DDB1A39DE770007FC38 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -141,6 +147,9 @@
 		7114CCB01A38C1E200B4C6E3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				713829041A3AE5B70094DA12 /* twc.gif */,
+				713829001A3AE5000094DA12 /* rain.jpg */,
+				713829011A3AE5000094DA12 /* snow.jpg */,
 				7114CCAE1A38C15400B4C6E3 /* teamLocations.json */,
 			);
 			name = Resources;
@@ -371,8 +380,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				713829051A3AE5B70094DA12 /* twc.gif in Resources */,
 				716EDBAB1A37A788007F330B /* Main.storyboard in Resources */,
 				7114CCAF1A38C15400B4C6E3 /* teamLocations.json in Resources */,
+				713829021A3AE5000094DA12 /* rain.jpg in Resources */,
+				713829031A3AE5000094DA12 /* snow.jpg in Resources */,
 				716EDBB01A37A788007F330B /* LaunchScreen.xib in Resources */,
 				716EDBAD1A37A788007F330B /* Images.xcassets in Resources */,
 			);
