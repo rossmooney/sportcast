@@ -11,14 +11,8 @@
 #import "WSCGame.h"
 #import "WSCWeatherlytics.h"
 #import "WSCWeatherlyticsGenerator.h"
-
-typedef enum : NSUInteger {
-    WSCWeatherStatCondition,
-    WSCWeatherStatTemperature,
-    WscWeatherStatWind,
-    WSCWeatherStatPressure,
-    WSCWeatherStatHumidity
-} WSCWeatherStatEnum;
+#import "WSCMainViewController.h"
+#import "WSCDetailViewController.h"
 
 @interface GameCell () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -43,7 +37,11 @@ typedef enum : NSUInteger {
         [self.homeTeamStats addObject:@(-2)];
     }
     
-
+    UITapGestureRecognizer *homeTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(homeTeamNameTapped)];
+    [self.homeTeamDetail addGestureRecognizer:homeTapRecognizer];
+    
+    UITapGestureRecognizer *awayTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(awayTeamNameTapped)];
+    [self.awayTeamDetail addGestureRecognizer:awayTapRecognizer];
 }
 
 - (void)setGame:(WSCGame *)game {
@@ -105,13 +103,13 @@ typedef enum : NSUInteger {
         identifier = @"AwayWeatherStatCell";
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
         cell.winPercentage.text = [self formatWinPercentage:self.awayTeamStats[indexPath.row] ];
-        cell.statPhrase.text = [self statPhraseForRow:indexPath.row withValue:value];
+        cell.statPhrase.text = [GameCell statPhraseForRow:indexPath.row withValue:value andIsShort:NO];
     }
     else {
         identifier = @"HomeWeatherStatCell";
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
         cell.winPercentage.text = [self formatWinPercentage:self.homeTeamStats[indexPath.row]];
-        cell.statPhrase.text = [self statPhraseForRow:indexPath.row withValue:value];
+        cell.statPhrase.text = [GameCell statPhraseForRow:indexPath.row withValue:value andIsShort:NO];
     }
     
     return cell;
@@ -178,10 +176,11 @@ typedef enum : NSUInteger {
     return [NSString stringWithFormat:@"%d%%", converted];
 }
 
-- (NSString *)statPhraseForRow:(NSInteger)row withValue:(NSUInteger)value {
++ (NSString *)statPhraseForRow:(NSInteger)row withValue:(NSUInteger)value andIsShort:(BOOL)isShort{
     NSString *statPhrase;
+    NSString *valueString = @"";
     if(row == WSCWeatherStatTemperature) {
-        NSString *valueString = @"";
+        
         switch (value) {
             case WSCGameTemperatureCold:
                 valueString = @"Cold";
@@ -206,7 +205,6 @@ typedef enum : NSUInteger {
         statPhrase = [NSString stringWithFormat:@"win percentage in %@ temperatures", valueString];
     }
     else if(row == WSCWeatherStatCondition) {
-        NSString *valueString = @"";
         switch (value) {
             case WSCGameConditionCloudy:
                 valueString = @"Cloudy";
@@ -234,7 +232,6 @@ typedef enum : NSUInteger {
         
     }
     else if(row == WSCWeatherStatHumidity) {
-        NSString *valueString = @"";
         switch (value) {
             case WSCGameHumidityNone:
                 valueString = @"No";
@@ -255,7 +252,6 @@ typedef enum : NSUInteger {
         statPhrase = [NSString stringWithFormat:@"win percentage in %@ humidity", valueString];
     }
     else if(row == WscWeatherStatWind) {
-        NSString *valueString = @"";
         switch (value) {
             case WSCGameWindNone:
                 valueString = @"No";
@@ -276,7 +272,6 @@ typedef enum : NSUInteger {
         statPhrase = [NSString stringWithFormat:@"win percentage in %@ wind", valueString];
     }
     else if(row == WSCWeatherStatPressure) {
-        NSString *valueString = @"";
         switch (value) {
             case WSCGamePressureLow:
                 valueString = @"Low";
@@ -294,6 +289,29 @@ typedef enum : NSUInteger {
         statPhrase = [NSString stringWithFormat:@"win percentage in %@ pressure", valueString];
     }
     
+    if(isShort) {
+        return valueString;
+    }
     return statPhrase;
 }
+
+#pragma mark - Actions
+
+- (void)homeTeamNameTapped {
+    [self loadDetailsViewWithWeatherlytics:[[WSCWeatherlyticsGenerator sharedInstance] weatherlyticsForTeam:self.game.homeTeam]];
+}
+
+- (void)awayTeamNameTapped {
+    [self loadDetailsViewWithWeatherlytics:[[WSCWeatherlyticsGenerator sharedInstance] weatherlyticsForTeam:self.game.awayTeam]];
+}
+
+- (void)loadDetailsViewWithWeatherlytics:(WSCWeatherlytics *)weatherlytics {
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    WSCDetailViewController * vc = (WSCDetailViewController *)[storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    vc.teamWeatherlytics = weatherlytics;
+    vc.teamData = self.mainViewController.teamData;
+    [self.mainViewController.navigationController pushViewController:vc animated:YES];
+}
+
 @end

@@ -13,6 +13,8 @@
 		7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCAC1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m */; };
 		7114CCAF1A38C15400B4C6E3 /* teamLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 7114CCAE1A38C15400B4C6E3 /* teamLocations.json */; };
 		7114CCB71A38CEC500B4C6E3 /* WSCNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */; };
+		713828FC1A3AC0930094DA12 /* WSCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713828FB1A3AC0930094DA12 /* WSCDetailViewController.m */; };
+		713828FF1A3AC13B0094DA12 /* StatDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 713828FE1A3AC13B0094DA12 /* StatDetailCell.m */; };
 		715D7DDA1A39253B0007FC38 /* WSCWeatherlytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */; };
 		715D7DDC1A39DE770007FC38 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715D7DDB1A39DE770007FC38 /* CoreData.framework */; };
 		715D7DE01A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 715D7DDE1A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld */; };
@@ -55,6 +57,10 @@
 		7114CCAE1A38C15400B4C6E3 /* teamLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = teamLocations.json; sourceTree = "<group>"; };
 		7114CCB51A38CEC500B4C6E3 /* WSCNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCNetworking.h; sourceTree = "<group>"; };
 		7114CCB61A38CEC500B4C6E3 /* WSCNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCNetworking.m; sourceTree = "<group>"; };
+		713828FA1A3AC0930094DA12 /* WSCDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCDetailViewController.h; sourceTree = "<group>"; };
+		713828FB1A3AC0930094DA12 /* WSCDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCDetailViewController.m; sourceTree = "<group>"; };
+		713828FD1A3AC13B0094DA12 /* StatDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatDetailCell.h; sourceTree = "<group>"; };
+		713828FE1A3AC13B0094DA12 /* StatDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatDetailCell.m; sourceTree = "<group>"; };
 		715D7DD81A39253B0007FC38 /* WSCWeatherlytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCWeatherlytics.h; sourceTree = "<group>"; };
 		715D7DD91A39253B0007FC38 /* WSCWeatherlytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCWeatherlytics.m; sourceTree = "<group>"; };
 		715D7DDB1A39DE770007FC38 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -183,6 +189,8 @@
 				716EDBA91A37A788007F330B /* Main.storyboard */,
 				716EDBA61A37A788007F330B /* WSCMainViewController.h */,
 				716EDBA71A37A788007F330B /* WSCMainViewController.m */,
+				713828FA1A3AC0930094DA12 /* WSCDetailViewController.h */,
+				713828FB1A3AC0930094DA12 /* WSCDetailViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -211,6 +219,8 @@
 				715D7E011A3A38870007FC38 /* GameCell.m */,
 				719154A91A3A77450037D870 /* WeatherStatCell.h */,
 				719154AA1A3A77450037D870 /* WeatherStatCell.m */,
+				713828FD1A3AC13B0094DA12 /* StatDetailCell.h */,
+				713828FE1A3AC13B0094DA12 /* StatDetailCell.m */,
 			);
 			name = "Cell Prototypes";
 			sourceTree = "<group>";
@@ -417,6 +427,7 @@
 			files = (
 				7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */,
 				715D7E021A3A38870007FC38 /* GameCell.m in Sources */,
+				713828FC1A3AC0930094DA12 /* WSCDetailViewController.m in Sources */,
 				715D7DFE1A39FC550007FC38 /* WSCCoreDataManager.m in Sources */,
 				719154AB1A3A77450037D870 /* WeatherStatCell.m in Sources */,
 				715D7DFB1A39E9AF0007FC38 /* CDTeamWeatherlytics.m in Sources */,
@@ -428,6 +439,7 @@
 				7114CCB71A38CEC500B4C6E3 /* WSCNetworking.m in Sources */,
 				715D7DF51A39E9AE0007FC38 /* CDGame.m in Sources */,
 				716EDBA51A37A788007F330B /* AppDelegate.m in Sources */,
+				713828FF1A3AC13B0094DA12 /* StatDetailCell.m in Sources */,
 				715D7E0B1A3A422E0007FC38 /* SectionHeaderCell.m in Sources */,
 				716EDBA21A37A788007F330B /* main.m in Sources */,
 				715D7DE01A39E21F0007FC38 /* SportCastDataModel.xcdatamodeld in Sources */,

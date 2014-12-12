@@ -24,7 +24,6 @@
 
 @property (nonatomic, strong) NSArray *schedule;
 @property (nonatomic, weak) IBOutlet UITableView *scheduleTableView;
-@property (nonatomic, strong) NSDictionary *teamData;
 @property (nonatomic, strong) NSIndexPath *expandedCell;
 
 @end
@@ -119,7 +118,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"GameCell";
     GameCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
+    cell.mainViewController = self;
     if (nil == cell) {
         cell = (GameCell *)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:cellIdentifier];
@@ -136,6 +135,9 @@
     cell.game = game;
     cell.homeTeam.text = [[self.teamData objectForKey:game.homeTeam] objectForKey:@"shortName"];
     cell.awayTeam.text = [[self.teamData objectForKey:game.awayTeam] objectForKey:@"shortName"];
+    
+    cell.homeTeamDetail.text = [[self.teamData objectForKey:game.homeTeam] objectForKey:@"longName"];
+    cell.awayTeamDetail.text = [[self.teamData objectForKey:game.awayTeam] objectForKey:@"longName"];
     
     if(self.expandedCell && indexPath.row == self.expandedCell.row && indexPath.section == self.expandedCell.section) {
         cell.awayTeamContainer.hidden = NO;

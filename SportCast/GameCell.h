@@ -8,11 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "SVGKImage.h"
-@class WSCGame;
+
+typedef enum : NSUInteger {
+    WSCWeatherStatCondition,
+    WSCWeatherStatTemperature,
+    WscWeatherStatWind,
+    WSCWeatherStatPressure,
+    WSCWeatherStatHumidity
+} WSCWeatherStatEnum;
+
+@class WSCGame, WSCMainViewController;
 @interface GameCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel        *homeTeam;
 @property (nonatomic, weak) IBOutlet UILabel        *awayTeam;
+@property (nonatomic, weak) IBOutlet UILabel        *homeTeamDetail;
+@property (nonatomic, weak) IBOutlet UILabel        *awayTeamDetail;
 @property (nonatomic, weak) IBOutlet UILabel        *homeRecord;
 @property (nonatomic, weak) IBOutlet UILabel        *awayRecord;
 @property (nonatomic, weak) IBOutlet UILabel        *temperature;
@@ -20,6 +31,7 @@
 @property (nonatomic, weak) IBOutlet UIImage        *weatherIcon;
 @property (nonatomic, weak) IBOutlet UICollectionView *homeCollectionView;
 @property (nonatomic, weak) IBOutlet UICollectionView *awayCollectionView;
+@property (nonatomic, weak) WSCMainViewController *mainViewController;
 
 @property (nonatomic, assign) BOOL                  hasWeatherData;
 
@@ -27,4 +39,6 @@
 @property (nonatomic, weak) IBOutlet UIView         *awayTeamContainer;
 @property (nonatomic, weak) IBOutlet UIView         *homeTeamContainer;
 @property (nonatomic, strong) WSCGame *game;
+
++ (NSString *)statPhraseForRow:(NSInteger)row withValue:(NSUInteger)value andIsShort:(BOOL)isShort;
 @end

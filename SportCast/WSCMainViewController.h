@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WSCMainViewController : UIViewController
+@property (nonatomic, strong) NSDictionary *teamData;
 
 @end
 

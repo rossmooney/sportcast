@@ -7,16 +7,88 @@
         <!--Detail View Controller-->
         <scene sceneID="oBS-45-JUz">
             <objects>
-                <viewController id="cns-E6-JTL" userLabel="Detail View Controller" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="cns-E6-JTL" userLabel="Detail View Controller" customClass="WSCDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="atj-Qb-e8r"/>
-                        <viewControllerLayoutGuide type="bottom" id="2Jl-1P-sul"/>
+                        <viewControllerLayoutGuide type="top" id="YrL-Hn-GN7"/>
+                        <viewControllerLayoutGuide type="bottom" id="qbn-Pd-cze"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fzv-Nf-iQo">
+                    <view key="view" contentMode="scaleToFill" id="oIp-dA-Fgi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5Q-Bx-KrL" userLabel="Header">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Arizona Cardinals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJ2-Wm-O4U">
+                                        <rect key="frame" x="201" y="0.0" width="170" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="spg-EC-PCH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Fux-Km-ay2"/>
+                                    <constraint firstItem="NJ2-Wm-O4U" firstAttribute="top" secondItem="s5Q-Bx-KrL" secondAttribute="top" id="iB9-40-VPL"/>
+                                    <constraint firstAttribute="centerX" secondItem="NJ2-Wm-O4U" secondAttribute="centerX" id="tS3-Bh-WcG"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wkk-uk-0s6">
+                                <rect key="frame" x="2" y="56" width="582" height="300"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aHj-VY-jLL">
+                                    <size key="itemSize" width="360" height="150"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StatDetailCell" id="cm4-2n-f95" customClass="StatDetailCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="360" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pe3-Qw-qK0">
+                                                    <rect key="frame" x="111" y="0.0" width="138" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <size key="customSize" width="360" height="150"/>
+                                        <connections>
+                                            <outlet property="statTitle" destination="pe3-Qw-qK0" id="gte-ly-PTe"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="cns-E6-JTL" id="g22-hC-td5"/>
+                                    <outlet property="delegate" destination="cns-E6-JTL" id="gTu-Kd-dMM"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Wkk-uk-0s6" secondAttribute="trailing" id="5tt-Gl-2UD"/>
+                            <constraint firstItem="qbn-Pd-cze" firstAttribute="top" secondItem="Wkk-uk-0s6" secondAttribute="bottom" id="OTd-t2-ol6"/>
+                            <constraint firstItem="Wkk-uk-0s6" firstAttribute="top" secondItem="s5Q-Bx-KrL" secondAttribute="bottom" constant="15" id="TZa-gf-jcU"/>
+                            <constraint firstItem="s5Q-Bx-KrL" firstAttribute="leading" secondItem="oIp-dA-Fgi" secondAttribute="leading" id="an5-mW-gSi"/>
+                            <constraint firstItem="s5Q-Bx-KrL" firstAttribute="top" secondItem="oIp-dA-Fgi" secondAttribute="top" id="dIm-17-qrL"/>
+                            <constraint firstItem="Wkk-uk-0s6" firstAttribute="leading" secondItem="oIp-dA-Fgi" secondAttribute="leading" id="isx-q6-Bg6"/>
+                            <constraint firstAttribute="trailing" secondItem="s5Q-Bx-KrL" secondAttribute="trailing" id="ro9-nn-hay"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailsCollectionView" destination="Wkk-uk-0s6" id="vLO-Kt-b04"/>
+                        <outlet property="teamName" destination="NJ2-Wm-O4U" id="9nK-mX-wx6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4g-1p-gX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -161,7 +233,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ag-en-pXd" userLabel="Away Team">
                                                     <rect key="frame" x="0.0" y="100" width="600" height="150"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arizona Cardinals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxy-fY-HYA">
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arizona Cardinals" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxy-fY-HYA">
                                                             <rect key="frame" x="8" y="-7" width="584" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="36" id="lwB-8r-W28"/>
@@ -272,7 +344,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fw3-vh-QA2" userLabel="Home Team">
                                                     <rect key="frame" x="0.0" y="250" width="600" height="150"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="St. Louis Rams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLe-Zy-5RC" userLabel="St. Louis Rams">
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="St. Louis Rams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLe-Zy-5RC" userLabel="St. Louis Rams">
                                                             <rect key="frame" x="8" y="-7" width="584" height="36"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="36" id="pP7-Kr-592"/>
@@ -388,11 +460,13 @@
                                             <outlet property="awayRecord" destination="qO4-cR-xIK" id="fQX-vT-cpZ"/>
                                             <outlet property="awayTeam" destination="udQ-kT-kZO" id="Vtl-md-PfG"/>
                                             <outlet property="awayTeamContainer" destination="2ag-en-pXd" id="gyJ-7A-a5i"/>
+                                            <outlet property="awayTeamDetail" destination="Wxy-fY-HYA" id="mt1-OD-gDY"/>
                                             <outlet property="detailWeather" destination="kga-M0-OIy" id="qbM-bT-Cbi"/>
                                             <outlet property="homeCollectionView" destination="Hf2-R5-rj8" id="fA2-Y5-pXg"/>
                                             <outlet property="homeRecord" destination="QDw-Pw-JS7" id="uHH-1G-fFB"/>
                                             <outlet property="homeTeam" destination="jyl-qr-l5p" id="vpt-4T-bKF"/>
                                             <outlet property="homeTeamContainer" destination="Fw3-vh-QA2" id="rQ1-M6-SgT"/>
+                                            <outlet property="homeTeamDetail" destination="hLe-Zy-5RC" id="X1e-wl-1zj"/>
                                             <outlet property="temperature" destination="5fv-VG-DFB" id="rlC-s1-fep"/>
                                         </connections>
                                     </tableViewCell>
