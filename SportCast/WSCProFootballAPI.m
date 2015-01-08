@@ -116,9 +116,6 @@ NSString * const apiGames =      @"games";
         }
         //Get the game start time and convert to GMT (for easy comparison)
         NSDate *gameTime = [NSDate dateWithTimeIntervalSince1970:[[gameDict objectForKey:@"time"] integerValue]];
-//        NSTimeZone *tz = [NSTimeZone localTimeZone];
-//        NSInteger seconds = -[tz secondsFromGMTForDate: gameTime];
-//        gameTime = [NSDate dateWithTimeInterval: seconds sinceDate: gameTime];
         game.date = gameTime;
         game.isNightGame = [self isNightTime:game.date];
 

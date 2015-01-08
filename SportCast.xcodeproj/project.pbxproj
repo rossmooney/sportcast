@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BD4BF499FCBD1A2EF0AB171 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 520299E3EB30BC4D182099E9 /* libPods.a */; };
 		7114CCA71A37F70700B4C6E3 /* WSCProFootballAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCA61A37F70700B4C6E3 /* WSCProFootballAPI.m */; };
 		7114CCAA1A389EF000B4C6E3 /* WSCGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCA91A389EF000B4C6E3 /* WSCGame.m */; };
 		7114CCAD1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7114CCAC1A38C03400B4C6E3 /* WSCWeatherlyticsGenerator.m */; };
@@ -50,7 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		520299E3EB30BC4D182099E9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7114CCA51A37F70700B4C6E3 /* WSCProFootballAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCProFootballAPI.h; sourceTree = "<group>"; };
 		7114CCA61A37F70700B4C6E3 /* WSCProFootballAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCProFootballAPI.m; sourceTree = "<group>"; };
 		7114CCA81A389EF000B4C6E3 /* WSCGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCGame.h; sourceTree = "<group>"; };
@@ -102,8 +100,6 @@
 		716EDBBB1A37A788007F330B /* SportCastTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SportCastTests.m; sourceTree = "<group>"; };
 		719154A91A3A77450037D870 /* WeatherStatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherStatCell.h; sourceTree = "<group>"; };
 		719154AA1A3A77450037D870 /* WeatherStatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherStatCell.m; sourceTree = "<group>"; };
-		83B1453DABD5D024A434BC3A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A106136C67499DB717DE56F8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +108,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				715D7DDC1A39DE770007FC38 /* CoreData.framework in Frameworks */,
-				3BD4BF499FCBD1A2EF0AB171 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,20 +121,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4EFC332A7FB6102AAC95B234 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A106136C67499DB717DE56F8 /* Pods.debug.xcconfig */,
-				83B1453DABD5D024A434BC3A /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		64C8D8AAC46C5F558917BAD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				715D7DDB1A39DE770007FC38 /* CoreData.framework */,
-				520299E3EB30BC4D182099E9 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,7 +225,6 @@
 				716EDB9E1A37A788007F330B /* SportCast */,
 				716EDBB81A37A788007F330B /* SportCastTests */,
 				716EDB9D1A37A788007F330B /* Products */,
-				4EFC332A7FB6102AAC95B234 /* Pods */,
 				64C8D8AAC46C5F558917BAD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -305,11 +289,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 716EDBBF1A37A788007F330B /* Build configuration list for PBXNativeTarget "SportCast" */;
 			buildPhases = (
-				7198A775D9AA87EEA877E4B3 /* Check Pods Manifest.lock */,
 				716EDB981A37A788007F330B /* Sources */,
 				716EDB991A37A788007F330B /* Frameworks */,
 				716EDB9A1A37A788007F330B /* Resources */,
-				76BEC4188960E2233B87B560 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -398,39 +380,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7198A775D9AA87EEA877E4B3 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		76BEC4188960E2233B87B560 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		716EDB981A37A788007F330B /* Sources */ = {
@@ -576,7 +525,6 @@
 		};
 		716EDBC01A37A788007F330B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A106136C67499DB717DE56F8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SportCast/Info.plist;
@@ -587,7 +535,6 @@
 		};
 		716EDBC11A37A788007F330B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83B1453DABD5D024A434BC3A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SportCast/Info.plist;

@@ -12,9 +12,6 @@
 #import "WSCGame.h"
 #import "WSCCoreDataManager.h"
 
-//WXCore
-#import "WXWeatherDataService/WXWeatherDataService+Observations.h"
-
 @interface WSCWeatherlyticsGenerator ()
 
 

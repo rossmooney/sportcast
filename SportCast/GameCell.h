@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SVGKImage.h"
 
 typedef enum : NSUInteger {
     WSCWeatherStatCondition,

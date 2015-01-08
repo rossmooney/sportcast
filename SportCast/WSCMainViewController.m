@@ -17,8 +17,6 @@
 #import "NSDate+NoTime.h"
 #import "GameCell.h"
 #import "SectionHeaderCell.h"
-#import "WXWeatherDataService/WXWeatherDataService.h"
-
 
 @interface WSCMainViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -191,12 +189,6 @@
     else {
         self.expandedCell = indexPath;
     }
-//    if(previouslySelected && !(previouslySelected.row == indexPath.row && previouslySelected.section == indexPath.section)) {
-//        [self.scheduleTableView reloadRowsAtIndexPaths:@[previouslySelected, indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    }
-//    else {
-//        [self.scheduleTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    }
     
     [self.scheduleTableView reloadData];
 }
@@ -216,37 +208,36 @@
     NSString *coordinates = [[self.teamData objectForKey:game.homeTeam] objectForKey:@"stadiumCoordinates"];
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour
                                                                    fromDate:game.date];
-    long gameHour = components.hour - [[NSTimeZone localTimeZone] secondsFromGMT]/3600;
-    [[WXWeatherDataService sharedInstance] requestHourlyForecastWithLocationKey:coordinates completionHandler:^(NSArray *hourlyForecast, NSError *error) {
-        for(WXHourlyForecast *forecast in hourlyForecast) {
-            NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour
-                                                                           fromDate:forecast.forecastDateUTC];
-            long hourNumber = components.hour;
-            
-            if(hourNumber == gameHour) {
-                cell.temperature.text = [forecast.temperature substringToIndex:forecast.temperature.length - 1];
-                cell.weatherIcon.image = forecast.weatherIcon.UIImage;
-                cell.detailWeather.text = forecast.phrase12;
-                
-                WSCGameCondition condition = [[WSCWeatherlyticsGenerator sharedInstance] gameConditionWithString:forecast.phrase12];
-                WSCGameTemperature temperature = [[WSCWeatherlyticsGenerator sharedInstance] gameTemperatureWithString:forecast.temperature];
-                WSCGameWind wind = [[WSCWeatherlyticsGenerator sharedInstance] gameWindWithString:forecast.wind.speed];
-//                WSCGamePressure pressure = [[WSCWeatherlyticsGenerator sharedInstance] gamePressureWithString:forecast.]
-                WSCGameHumidity humidity = [[WSCWeatherlyticsGenerator sharedInstance] gameHumidityWithString:forecast.relativeHumidity];
-                
-                cell.game.gameCondition = condition;
-                cell.game.gameHumidity = humidity;
-                cell.game.gameTemperature = temperature;
-                cell.game.gameWind = wind;
-                break;
-            }
-        }
-    }];
-//    [[WXWeatherDataService sharedInstance] requestDailyForecastWithLocationKey:coordinates completionHandler:^(NSArray *dailyForecast, NSError *error) {
-//        
-//        
-//
-//    }];
+    long gameHour = components.hour - ([[NSTimeZone localTimeZone] secondsFromGMT]/3600) + 7;
+    
+    
+    
+    
+    //Removed access to proprietary weather SDK
+    
+//            NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitHour
+//                                                                           fromDate:forecast.forecastDateUTC];
+//            long hourNumber = components.hour;
+//            
+//            if(hourNumber == gameHour) {
+//                cell.temperature.text = [forecast.temperature substringToIndex:forecast.temperature.length - 1];
+//                cell.weatherIcon.image = forecast.weatherIcon.UIImage;
+//                cell.detailWeather.text = forecast.phrase12;
+//                
+//                WSCGameCondition condition = [[WSCWeatherlyticsGenerator sharedInstance] gameConditionWithString:forecast.phrase12];
+//                WSCGameTemperature temperature = [[WSCWeatherlyticsGenerator sharedInstance] gameTemperatureWithString:forecast.temperature];
+//                WSCGameWind wind = [[WSCWeatherlyticsGenerator sharedInstance] gameWindWithString:forecast.wind.speed];
+////                WSCGamePressure pressure = [[WSCWeatherlyticsGenerator sharedInstance] gamePressureWithString:forecast.]
+//                WSCGameHumidity humidity = [[WSCWeatherlyticsGenerator sharedInstance] gameHumidityWithString:forecast.relativeHumidity];
+//                
+//                cell.game.gameCondition = condition;
+//                cell.game.gameHumidity = humidity;
+//                cell.game.gameTemperature = temperature;
+//                cell.game.gameWind = wind;
+//                break;
+//            }
+//        }
+
 }
 
 @end

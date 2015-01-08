@@ -239,7 +239,7 @@
                                                                 <constraint firstAttribute="height" constant="36" id="lwB-8r-W28"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="23"/>
-                                                            <color key="textColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="73M-rf-3Jw">
